@@ -168,6 +168,7 @@ class Paso1 extends React.Component {
                     </Form.Item>
                     <Form.Item label="Discapacidad">
                         {getFieldDecorator('discapacidad', {
+                            initialValue: fichaPersona.IdAdm_Discapacidad == 0 ? 1 : fichaPersona.IdAdm_Discapacidad,
                             rules: [
                                 {
                                     required: true,

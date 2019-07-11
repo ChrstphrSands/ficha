@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import Paso2 from "./Paso2/Paso2";
+import Paso1 from "./Paso1/Paso1";
 
 class App extends React.Component {
     render() {
         return (
-            <Paso2 />
+            <Paso1 />
         )
     }
 }

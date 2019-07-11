@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d3d75c4-10d8-41f9-b204-b0eb8d552656" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LoginPage/LoginPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginPage/LoginPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LoginPage/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginPage/LoginPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/logo.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/serviceWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/serviceWorker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Paso1/Paso1.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Paso1/Paso1.jsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,7 +19,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
+            <state relative-caret-position="203">
               <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -49,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Paso3/Paso3.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="86" column="16" lean-forward="true" selection-start-line="86" selection-start-column="16" selection-end-line="86" selection-end-column="16" />
+            <state relative-caret-position="-874">
+              <caret line="108" column="29" lean-forward="true" selection-start-line="108" selection-start-column="29" selection-end-line="108" selection-end-column="29" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -91,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Paso1/Paso1.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1914">
-              <caret line="68" column="51" selection-start-line="68" selection-start-column="51" selection-end-line="68" selection-end-column="51" />
+            <state relative-caret-position="986">
+              <caret line="186" column="57" lean-forward="true" selection-start-line="186" selection-start-column="57" selection-end-line="186" selection-end-column="57" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -138,6 +129,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/Paso3/Paso3.jsx" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Paso1/Paso1.jsx" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Paso2/Paso2.jsx" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Step1/Step1.jsx" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/App.js" root0="SKIP_INSPECTION" />
@@ -150,9 +142,10 @@
         <option value="$PROJECT_DIR$/src/App.css" />
         <option value="$PROJECT_DIR$/src/LoginPage/LoginPage.css" />
         <option value="$PROJECT_DIR$/src/LoginPage/LoginPage.jsx" />
-        <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/Paso2/Paso2.jsx" />
+        <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/Paso1/Paso1.jsx" />
       </list>
     </option>
   </component>
@@ -256,12 +249,12 @@
       <workItem from="1562740414236" duration="70000" />
       <workItem from="1562740495025" duration="4062000" />
       <workItem from="1562818552947" duration="3273000" />
-      <workItem from="1562854383019" duration="1267000" />
+      <workItem from="1562854383019" duration="1646000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12126000" />
+    <option name="totallyTimeSpent" value="12505000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1934" height="2127" extended-state="0" />
@@ -279,9 +272,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.17530487" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32977644" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50052744" side_tool="true" weight="0.28302845" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4994726" visible="true" weight="0.28302845" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -312,16 +305,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="986">
@@ -340,16 +323,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1363">
           <caret line="50" selection-start-line="50" selection-end-line="50" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paso1/Paso1.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1914">
-          <caret line="68" column="51" selection-start-line="68" selection-start-column="51" selection-end-line="68" selection-end-column="51" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -385,8 +358,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Paso3/Paso3.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="86" column="16" lean-forward="true" selection-start-line="86" selection-start-column="16" selection-end-line="86" selection-end-column="16" />
+        <state relative-caret-position="-874">
+          <caret line="108" column="29" lean-forward="true" selection-start-line="108" selection-start-column="29" selection-end-line="108" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Paso1/Paso1.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="986">
+          <caret line="186" column="57" lean-forward="true" selection-start-line="186" selection-start-column="57" selection-end-line="186" selection-end-column="57" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
