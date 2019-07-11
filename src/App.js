@@ -1,16 +1,11 @@
 import React from 'react';
 import './App.css';
-import {Form, Input, Button, Select} from 'antd';
-import {Layout} from "antd";
-import {LoginPage} from "./LoginPage/LoginPage";
-import {Route} from "react-router";
-
-const {Option} = Select;
+import Paso2 from "./Paso2/Paso2";
 
 class App extends React.Component {
     render() {
         return (
-            <Route path="/" component={LoginPage}/>
+            <Paso2 />
         )
     }
 }

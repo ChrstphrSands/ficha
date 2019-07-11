@@ -1,0 +1,263 @@
+import React from 'react';
+import {Form, Input, Button, Select, Icon} from 'antd';
+import {Layout} from "antd";
+
+const {Option} = Select;
+const {Footer} = Layout;
+
+class Paso1 extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            paso: 1,
+            idiomas: [],
+            discapacidades: [],
+            estadosCiviles: [],
+            tiposDocumentos: [],
+            // fichaPersona: {
+            //     nombre_per: '',
+            //     apellido_pat_per: '',
+            //     apellido_mat_per: '',
+            //     sexo_per: '',
+            //     id_est_civil: '',
+            //     id_tipo_doc: '',
+            //     nro_doc_per: '',
+            //     telefono_per: '',
+            //     celular_per: '',
+            // },
+            fichaPersona: [],
+        };
+    }
+
+    componentDidMount() {
+        this.getFichaPersona();
+        this.getIdiomas();
+        this.getDiscapacidades();
+        this.getEstadosCiviles();
+        this.getTipoDocumento();
+    }
+
+    getFichaPersona() {
+        fetch('http://localhost/FichaWeb/app/controller/fichaPersona/read.php')
+            .then(response => response.json())
+            .then(data => this.setState({fichaPersona: data}))
+    }
+
+    getIdiomas() {
+        fetch('http://localhost/FichaWeb/app/controller/idioma/read.php')
+            .then(response => response.json())
+            .then(data => this.setState({nacionalidades: data}));
+    }
+
+    getDiscapacidades() {
+        fetch('http://localhost/FichaWeb/app/controller/discapacidad/read.php')
+            .then(response => response.json())
+            .then(data => this.setState({discapacidades: data}))
+    }
+
+    getEstadosCiviles() {
+        fetch('http://localhost/FichaWeb/app/controller/estadoCivil/read.php')
+            .then(response => response.json())
+            .then(data => this.setState({estadosCiviles: data}))
+    }
+
+    getTipoDocumento() {
+        fetch('http://localhost/FichaWeb/app/controller/tipoDocumento/read.php')
+            .then(response => response.json())
+            .then(data => this.setState({tiposDocumentos: data}))
+    }
+
+    render() {
+
+        const {nacionalidades} = this.state;
+        const {discapacidades} = this.state;
+        const {estadosCiviles} = this.state;
+        const {tiposDocumentos} = this.state;
+        const {fichaPersona} = this.state;
+
+        const formItemLayout = {
+            labelCol: {
+                xs: {span: 24},
+                sm: {span: 8},
+            },
+            wrapperCol: {
+                xs: {span: 24},
+                sm: {span: 16},
+            },
+        };
+
+        const {getFieldDecorator} = this.props.form;
+
+        function handleChanges(value) {
+            console.log(`se ha seleccionado ${value}`);
+        }
+
+        return (
+
+            <Layout style={{width: '75%', background: "white"}}>
+                <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+                    <Form.Item label="Nombres">
+                        {/*{getFieldDecorator('nombres', {*/}
+                        {/*    rules: [*/}
+                        {/*        {*/}
+                        {/*            required: true,*/}
+                        {/*            message: 'Por favor ingrese sus nombres',*/}
+                        {/*        },*/}
+                        {/*    ],*/}
+                        {/*})(<Input defaultValue={fichaPersona.nombre_per} />)}*/}
+                        <Input value={fichaPersona.nombre_per}/>
+                    </Form.Item>
+                    <Form.Item label="Apellido Paterno">
+                        {/*{getFieldDecorator('paterno', {*/}
+                        {/*    rules: [*/}
+                        {/*        {*/}
+                        {/*            required: true,*/}
+                        {/*            message: 'Por favor ingrese su apellido paterno',*/}
+                        {/*        },*/}
+                        {/*    ],*/}
+                        {/*})(<Input defaultValue={fichaPersona.apellido_pat_per}/>)}*/}
+                        <Input value={fichaPersona.apellido_pat_per}/>
+                    </Form.Item>
+                    <Form.Item label="Apellido Materno">
+                        {/*{getFieldDecorator('materno', {*/}
+                        {/*    rules: [*/}
+                        {/*        {*/}
+                        {/*            required: true,*/}
+                        {/*            message: 'Por favor ingrese su apellido materno',*/}
+                        {/*        },*/}
+                        {/*    ],*/}
+                        {/*})(<Input/>)}*/}
+                        <Input value={fichaPersona.apellido_mat_per}/>
+                    </Form.Item>
+
+                    <Form.Item label="Género">
+                        {getFieldDecorator('genero', {
+                            initialValue: fichaPersona.sexo_per,
+                            rules: [
+                                {
+                                    required: true,
+                                    message: 'Por favor seleccione su género.',
+                                },
+                            ],
+                        })(
+                            <Select placeholder={"Seleccione su sexo"} onChange={handleChanges}>
+                                <Option value="M">Masculino</Option>
+                                <Option value="F">Femenino</Option>
+                            </Select>)}
+                    </Form.Item>
+
+                    <Form.Item label="Estado Civil">
+                        {getFieldDecorator('estadoCivil', {
+                            initialValue: fichaPersona.id_est_civil,
+                            rules: [
+                                {
+                                    required: true,
+                                    message: 'Por favor seleccione su estado civil.',
+                                },
+                            ],
+                        })(
+                            <Select placeholder={"Seleccione su estado civil"} onChange={handleChanges}>
+                                {
+                                    estadosCiviles.map(estadoCivil =>
+                                        <Option value={estadoCivil.id_est_civil}>{estadoCivil.desc_est_civil}</Option>
+                                    )
+                                }
+                            </Select>)}
+                    </Form.Item>
+                    <Form.Item label="Discapacidad">
+                        {getFieldDecorator('discapacidad', {
+                            rules: [
+                                {
+                                    required: true,
+                                    message: 'En caso cuente con una discapacidad seleccione una.',
+                                },
+                            ],
+                        })(
+                            <Select placeholder={"Seleccione en caso tenga alguna discapacidad"}
+                                    onChange={handleChanges}>
+                                {discapacidades.map(discapacidad =>
+                                    <Option value={discapacidad.IdAdm_Discapacidad}>{discapacidad.Descripcion}</Option>
+                                )}
+                            </Select>)}
+                    </Form.Item>
+                    <Form.Item label="Tipo de documento">
+                        {getFieldDecorator('documento', {
+                            initialValue: fichaPersona.id_tipo_doc,
+                            rules: [
+                                {
+                                    required: true,
+                                    message: 'Seleccione el tipo de documento.',
+                                },
+                            ],
+                        })(
+                            <Select placeholder={"DNI"} onChange={handleChanges}>
+                                {tiposDocumentos.map(tipoDocumento =>
+                                    <Option value={tipoDocumento.id_tipo_doc}>{tipoDocumento.desc_tipo_doc}</Option>
+                                )}
+                            </Select>)}
+                    </Form.Item>
+                    <Form.Item label="Nro. de Documento">
+                        {/*{getFieldDecorator('dni', {*/}
+                        {/*    rules: [*/}
+                        {/*        {*/}
+                        {/*            required: true,*/}
+                        {/*            message: 'Por favor ingrese su DNI',*/}
+                        {/*        },*/}
+                        {/*    ],*/}
+                        {/*})(<Input/>)}*/}
+                        <Input value={fichaPersona.nro_doc_per}/>
+                    </Form.Item>
+
+                    <Form.Item label="E-mail">
+                        {/*{getFieldDecorator('email', {*/}
+                        {/*    rules: [*/}
+                        {/*        {*/}
+                        {/*            required: true,*/}
+                        {/*            message: 'Por favor ingrese eu E-mail',*/}
+                        {/*        },*/}
+                        {/*    ],*/}
+                        {/*})(<Input/>)}*/}
+                        <Input value={fichaPersona.email_per}/>
+                    </Form.Item>
+
+
+                    <Form.Item label="Celular">
+                        {/*{getFieldDecorator('celular', {*/}
+                        {/*    rules: [*/}
+                        {/*        {*/}
+                        {/*            required: true,*/}
+                        {/*            message: 'Por favor ingrese su número de celular',*/}
+                        {/*        },*/}
+                        {/*    ],*/}
+                        {/*})(<Input/>)}*/}
+                        <Input value={fichaPersona.celular_per}/>
+                    </Form.Item>
+                    <Form.Item label="Teléfono">
+                        {/*{getFieldDecorator('telefono', {*/}
+                        {/*    rules: [*/}
+                        {/*        {*/}
+                        {/*            required: true,*/}
+                        {/*            message: 'Por favor ingrese su número de teléfono',*/}
+                        {/*        },*/}
+                        {/*    ],*/}
+                        {/*})(<Input/>)}*/}
+                        <Input value={fichaPersona.telefono_per}/>
+                    </Form.Item>
+                </Form>
+                <Footer>
+                    <Button.Group size='large'>
+                        <Button type="primary">
+                            Siguiente
+                            <Icon type="right"/>
+                        </Button>
+                    </Button.Group>
+                </Footer>
+
+            </Layout>
+        )
+    }
+}
+
+export default Form.create()(Paso1);

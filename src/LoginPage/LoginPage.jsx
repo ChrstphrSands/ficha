@@ -1,7 +1,9 @@
 import React from 'react';
 import {Button, Form, Icon, Input} from "antd";
+import {Router} from "react-router";
 
 class LoginPage extends React.Component {
+
 
     constructor(props) {
         super(props);
@@ -10,13 +12,20 @@ class LoginPage extends React.Component {
             dni: '',
             password: ''
         }
+
+
+    }
+
+    submitForm(e) {
+        e.preventDefault();
+        this.props.history.push('/Paso1');
     }
 
     render() {
         const {getFieldDecorator} = this.props.form;
 
         return (
-            <Form onSubmit={this.handleSubmit} className="login-form">
+            <Form onSubmit={this.submitForm.bind(this)} className="login-form">
                 <Form.Item>
                     {getFieldDecorator('dni', {
                         rules: [{required: true, message: 'Por ingrese su número de DNI!'}],
