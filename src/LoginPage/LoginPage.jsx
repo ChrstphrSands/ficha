@@ -1,6 +1,5 @@
 import React from 'react';
 import {Button, Form, Icon, Input} from "antd";
-import {Router} from "react-router";
 
 class LoginPage extends React.Component {
 
@@ -12,8 +11,6 @@ class LoginPage extends React.Component {
             dni: '',
             password: ''
         }
-
-
     }
 
     submitForm(e) {

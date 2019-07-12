@@ -99,15 +99,15 @@ class Paso1 extends React.Component {
             <Layout style={{width: '75%', background: "white"}}>
                 <Form {...formItemLayout} onSubmit={this.handleSubmit}>
                     <Form.Item label="Nombres">
-                        {/*{getFieldDecorator('nombres', {*/}
-                        {/*    rules: [*/}
-                        {/*        {*/}
-                        {/*            required: true,*/}
-                        {/*            message: 'Por favor ingrese sus nombres',*/}
-                        {/*        },*/}
-                        {/*    ],*/}
-                        {/*})(<Input defaultValue={fichaPersona.nombre_per} />)}*/}
-                        <Input value={fichaPersona.nombre_per}/>
+                        {getFieldDecorator('nombres', {
+                            initialValue: fichaPersona.nombre_per,
+                            rules: [
+                                {
+                                    required: true,
+                                    message: 'Por favor ingrese sus nombres',
+                                },
+                            ],
+                        })(<Input/>)}
                     </Form.Item>
                     <Form.Item label="Apellido Paterno">
                         {/*{getFieldDecorator('paterno', {*/}
@@ -168,7 +168,7 @@ class Paso1 extends React.Component {
                     </Form.Item>
                     <Form.Item label="Discapacidad">
                         {getFieldDecorator('discapacidad', {
-                            initialValue: fichaPersona.IdAdm_Discapacidad == 0 ? 1 : fichaPersona.IdAdm_Discapacidad,
+                            initialValue: fichaPersona.IdAdm_Discapacidad,
                             rules: [
                                 {
                                     required: true,
@@ -222,8 +222,6 @@ class Paso1 extends React.Component {
                         {/*})(<Input/>)}*/}
                         <Input value={fichaPersona.email_per}/>
                     </Form.Item>
-
-
                     <Form.Item label="Celular">
                         {/*{getFieldDecorator('celular', {*/}
                         {/*    rules: [*/}

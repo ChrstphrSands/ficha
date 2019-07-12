@@ -17,13 +17,14 @@ class Paso2 extends React.Component {
             provincias: [],
             distritos: [],
             fichaPersona: [],
+            idPais: '',
         };
     }
 
     componentDidMount() {
         this.getFichaPersona();
         this.getPaises();
-        this.getCiudades();
+        // this.getCiudades();
         this.getProvincias();
         this.getDistritos();
     }
@@ -41,7 +42,7 @@ class Paso2 extends React.Component {
     }
 
     getCiudades() {
-        fetch(`http://localhost/FichaWeb/app/controller/ciudad/read.php?idPais=9589`)
+        fetch(`http://localhost/FichaWeb/app/controller/ciudad/read.php?idPais=${this.state.idPais}`)
             .then(response => response.json())
             .then(data => this.setState({ciudades: data}));
     }
@@ -56,6 +57,13 @@ class Paso2 extends React.Component {
         fetch('http://localhost/FichaWeb/app/controller/distrito/read.php/?idPais=9589&idCiudad=2919&idProvincia=2301')
             .then(response => response.json())
             .then(data => this.setState({distritos: data}));
+    }
+
+    handleChanges(e) {
+        let {name, value} = e.target;
+        this.setState({idPais: value})
+        console.log(this.state.idPais);
+        this.getCiudades();
     }
 
     render() {
@@ -83,10 +91,6 @@ class Paso2 extends React.Component {
             rules: [{type: 'object', required: true, message: 'Por favor seleccione la fecha de su nacimiento'}],
         };
 
-        function handleChanges(value) {
-            console.log(`se ha seleccionado ${value}`);
-        }
-
         return (
             <Form {...formItemLayout} style={{width: "75%"}}>
                 <Form.Item label="Fecha de Nacimiento">
@@ -112,7 +116,7 @@ class Paso2 extends React.Component {
                     })(
                         <Select
                             placeholder={"Seleccione el país"}
-                            onChange={handleChanges}
+                            onChange={this.handleChanges}
                             showSearch={true}
                             optionFilterProp={"children"}
                             filterOption={(input, option) =>
@@ -136,7 +140,7 @@ class Paso2 extends React.Component {
                             },
                         ],
                     })(
-                        <Select placeholder={"Seleccione ciudad"} onChange={handleChanges}
+                        <Select placeholder={"Seleccione ciudad"} onChange={this.handleChanges}
                                 showSearch={true}
                                 optionFilterProp={"children"}
                                 filterOption={(input, option) =>
@@ -159,7 +163,7 @@ class Paso2 extends React.Component {
                             },
                         ],
                     })(
-                        <Select placeholder={"Seleccione la provincia"} onChange={handleChanges}
+                        <Select placeholder={"Seleccione la provincia"} onChange={this.handleChanges}
                                 showSearch={true}
                                 optionFilterProp={"children"}
                                 filterOption={(input, option) =>
@@ -183,7 +187,7 @@ class Paso2 extends React.Component {
                             },
                         ],
                     })(
-                        <Select placeholder={"Seleccione el distrito"} onChange={handleChanges}
+                        <Select placeholder={"Seleccione el distrito"} onChange={this.handleChanges}
                                 showSearch={true}
                                 optionFilterProp={"children"}
                                 filterOption={(input, option) =>
