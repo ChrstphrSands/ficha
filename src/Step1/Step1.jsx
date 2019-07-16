@@ -74,7 +74,7 @@ class Step1 extends React.Component {
         }
 
         return (
-            <Form {...formItemLayout} onSubmit={this.handleSubmit} style={{width: "75%"}}>
+            <Form {...formItemLayout} onSubmit={this.handleSave} style={{width: "75%"}}>
                 <Form.Item label="Nombres">
                     {getFieldDecorator('nombres', {
                         rules: [

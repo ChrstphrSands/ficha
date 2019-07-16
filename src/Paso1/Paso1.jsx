@@ -97,7 +97,7 @@ class Paso1 extends React.Component {
         return (
 
             <Layout style={{width: '75%', background: "white"}}>
-                <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+                <Form {...formItemLayout} onSubmit={this.handleSave}>
                     <Form.Item label="Nombres">
                         {getFieldDecorator('nombres', {
                             initialValue: fichaPersona.nombre_per,
