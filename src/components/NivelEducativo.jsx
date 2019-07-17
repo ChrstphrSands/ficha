@@ -124,7 +124,7 @@ class NivelEducativo extends React.Component {
           <Form.Item label="Ciudad">
             {getFieldDecorator("ciudad", {
               initialValue:
-                ficha.id_educ_ciudad_per == ""
+                ficha.id_educ_ciudad_per == "" || ficha.id_educ_ciudad_per == null
                   ? "2919"
                   : ficha.id_educ_ciudad_per,
               rules: [
@@ -147,7 +147,7 @@ class NivelEducativo extends React.Component {
           <Form.Item label="Provincia">
             {getFieldDecorator("provincia", {
               initialValue:
-                ficha.id_educ_provincia_per == ""
+                ficha.id_educ_provincia_per == "" || ficha.id_educ_provincia_per == null
                   ? "2301"
                   : ficha.id_educ_provincia_per,
               rules: [
@@ -172,7 +172,7 @@ class NivelEducativo extends React.Component {
           <Form.Item label="Distrito">
             {getFieldDecorator("distrito", {
               initialValue:
-                ficha.id_educ_distrito_per == ""
+                ficha.id_educ_distrito_per == "" || ficha.id_educ_distrito_per == null
                   ? "230101"
                   : ficha.id_educ_distrito_per,
               rules: [

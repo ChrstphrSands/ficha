@@ -76,7 +76,7 @@ class LugarResidenciaActual extends React.Component {
                 <Form {...formItemLayout}>
                     <Form.Item label="Ciudad">
                         {getFieldDecorator('ciudad', {
-                            initialValue: ficha.id_res_ciudad_per == '' ? '2919' : ficha.id_res_ciudad_per,
+                            initialValue: ficha.id_res_ciudad_per == '' || ficha.id_res_ciudad_per == null ? '2919' : ficha.id_res_ciudad_per,
                             rules: [
                                 {
                                     required: true,
@@ -93,7 +93,7 @@ class LugarResidenciaActual extends React.Component {
                     </Form.Item>
                     <Form.Item label="Provincia">
                         {getFieldDecorator('provincia', {
-                            initialValue: ficha.id_res_provincia_per == '' ? '2301' : ficha.id_res_provincia_per,
+                            initialValue: ficha.id_res_provincia_per == '' || ficha.id_res_provincia_per == null ? '2301' : ficha.id_res_provincia_per,
                             rules: [
                                 {
                                     required: true,
@@ -109,7 +109,7 @@ class LugarResidenciaActual extends React.Component {
                     </Form.Item>
                     <Form.Item label="Distrito">
                         {getFieldDecorator('distrito', {
-                            initialValue: ficha.id_res_distrito_per == '' ? '230101' : ficha.id_res_distrito_per,
+                            initialValue: ficha.id_res_distrito_per == '' || ficha.id_res_distrito_per == null ? '230101' : ficha.id_res_distrito_per,
                             rules: [
                                 {
                                     required: true,
@@ -168,7 +168,6 @@ class LugarResidenciaActual extends React.Component {
             </Layout>
         )
     }
-
 }
 
 export default Form.create()(LugarResidenciaActual);
