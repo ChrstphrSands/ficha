@@ -99,7 +99,9 @@ class NivelEducativo extends React.Component {
           <Form.Item label="Pais">
             {getFieldDecorator("pais", {
               initialValue:
-                ficha.id_educ_pais_per === "" || ficha.id_educ_pais_per === "0"
+                ficha.id_educ_pais_per === "" ||
+                ficha.id_educ_pais_per === "0" ||
+                ficha.id_educ_pais_per === null
                   ? "9589"
                   : ficha.id_educ_pais_per,
               rules: [
@@ -124,7 +126,8 @@ class NivelEducativo extends React.Component {
           <Form.Item label="Ciudad">
             {getFieldDecorator("ciudad", {
               initialValue:
-                ficha.id_educ_ciudad_per == "" || ficha.id_educ_ciudad_per == null
+                ficha.id_educ_ciudad_per == "" ||
+                ficha.id_educ_ciudad_per == null
                   ? "2919"
                   : ficha.id_educ_ciudad_per,
               rules: [
@@ -147,7 +150,8 @@ class NivelEducativo extends React.Component {
           <Form.Item label="Provincia">
             {getFieldDecorator("provincia", {
               initialValue:
-                ficha.id_educ_provincia_per == "" || ficha.id_educ_provincia_per == null
+                ficha.id_educ_provincia_per == "" ||
+                ficha.id_educ_provincia_per == null
                   ? "2301"
                   : ficha.id_educ_provincia_per,
               rules: [
@@ -172,7 +176,8 @@ class NivelEducativo extends React.Component {
           <Form.Item label="Distrito">
             {getFieldDecorator("distrito", {
               initialValue:
-                ficha.id_educ_distrito_per == "" || ficha.id_educ_distrito_per == null
+                ficha.id_educ_distrito_per == "" ||
+                ficha.id_educ_distrito_per == null
                   ? "230101"
                   : ficha.id_educ_distrito_per,
               rules: [
@@ -196,7 +201,10 @@ class NivelEducativo extends React.Component {
           </Form.Item>
           <Form.Item label="Institucion Educativa">
             {getFieldDecorator("institucion", {
-              initialValue: ficha.idIEdu == "" ? "1" : ficha.idIEdu,
+              initialValue:
+                ficha.idIEdu == "" || ficha.idIEdu == null
+                  ? "NINGUNO"
+                  : ficha.idIEdu,
               rules: [
                 {
                   required: true,

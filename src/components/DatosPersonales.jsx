@@ -124,7 +124,7 @@ class DatosPersonales extends React.Component {
 
           <Form.Item label="Género">
             {getFieldDecorator("genero", {
-              initialValue: ficha.sexo_per,
+              initialValue: ficha.sexo_per === "" ? "M" : ficha.sexo_per,
               rules: [
                 {
                   required: true,
@@ -195,7 +195,10 @@ class DatosPersonales extends React.Component {
           </Form.Item>
           <Form.Item label="Tipo de documento">
             {getFieldDecorator("documento", {
-              initialValue: ficha.id_tipo_doc,
+              initialValue:
+                ficha.id_tipo_doc === "" || ficha.id_tipo_doc === "0"
+                  ? "1"
+                  : ficha.id_tipo_doc,
               rules: [
                 {
                   required: true,

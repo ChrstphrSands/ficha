@@ -89,7 +89,10 @@ class LugarFechaNacimiento extends React.Component {
         <Form {...formItemLayout}>
           <Form.Item label="Fecha de Nacimiento">
             {getFieldDecorator("fechaNac", {
-              initialValue: moment(ficha.fch_nacimiento_per),
+              initialValue:
+                ficha.fch_nacimiento_per == ""
+                  ? moment("25-11-1999", dateFormat)
+                  : moment(ficha.fch_nacimiento_per, dateFormat),
               rules: [
                 {
                   type: "object",
@@ -110,7 +113,9 @@ class LugarFechaNacimiento extends React.Component {
           <Form.Item label="País">
             {getFieldDecorator("pais", {
               initialValue:
-                ficha.id_nac_pais_per == "" || ficha.id_nac_pais_per == null ? "9589" : ficha.id_nac_pais_per,
+                ficha.id_nac_pais_per == "" || ficha.id_nac_pais_per == null
+                  ? "9589"
+                  : ficha.id_nac_pais_per,
               rules: [
                 {
                   required: true,
@@ -163,7 +168,8 @@ class LugarFechaNacimiento extends React.Component {
           <Form.Item label="Provincia">
             {getFieldDecorator("provincia", {
               initialValue:
-                ficha.id_nac_provincia_per == "" || ficha.id_nac_provincia_per == null
+                ficha.id_nac_provincia_per == "" ||
+                ficha.id_nac_provincia_per == null
                   ? "2301"
                   : ficha.id_nac_provincia_per,
               rules: [
@@ -188,7 +194,8 @@ class LugarFechaNacimiento extends React.Component {
           <Form.Item label="Distrito">
             {getFieldDecorator("distrito", {
               initialValue:
-                ficha.id_nac_distrito_per == "" || ficha.id_nac_distrito_per == null
+                ficha.id_nac_distrito_per == "" ||
+                ficha.id_nac_distrito_per == null
                   ? "230101"
                   : ficha.id_nac_distrito_per,
               rules: [
