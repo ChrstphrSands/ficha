@@ -4,8 +4,6 @@ import moment from "moment";
 
 const { Option } = Select;
 
-let idPais = "";
-
 class LugarFechaNacimiento extends React.Component {
   siguiente = e => {
     e.preventDefault();
@@ -28,43 +26,54 @@ class LugarFechaNacimiento extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.getPaises();
-    this.getCiudades();
-    this.getProvincias();
-    this.getDistritos();
+  async componentDidMount() {
+    await this.getPaises();
+    await this.getCiudades();
+    await this.getProvincias();
+    await this.getDistritos();
   }
 
-  getPaises() {
-    fetch("http://localhost/FichaWeb/app/controller/nacionalidad/read.php")
-      .then(response => response.json())
-      .then(data => this.setState({ nacionalidades: data }));
-  }
+  getPaises = async () => {
+    const response = await fetch(
+      "http://localhost/FichaWeb/app/controller/nacionalidad/read.php"
+    );
 
-  getCiudades() {
-    fetch(
+    const data = await response.json();
+    await this.setState({
+      nacionalidades: data
+    });
+  };
+
+  getCiudades = async () => {
+    const response = await fetch(
       `http://localhost/FichaWeb/app/controller/ciudad/read.php?idPais=9589`
-    )
-      .then(response => response.json())
-      .then(data => this.setState({ ciudades: data }));
-    console.log(idPais);
-  }
+    );
+    const data = await response.json();
+    await this.setState({
+      ciudades: data
+    });
+  };
 
-  getProvincias() {
-    fetch(
+  getProvincias = async () => {
+    const response = await fetch(
       "http://localhost/FichaWeb/app/controller/provincia/read.php/?idCiudad=2919"
-    )
-      .then(response => response.json())
-      .then(data => this.setState({ provincias: data }));
-  }
+    );
 
-  getDistritos() {
-    fetch(
+    const data = await response.json();
+    await this.setState({
+      provincias: data
+    });
+  };
+
+  getDistritos = async () => {
+    const response = await fetch(
       "http://localhost/FichaWeb/app/controller/distrito/read.php/?idPais=9589&idCiudad=2919&idProvincia=2301"
-    )
-      .then(response => response.json())
-      .then(data => this.setState({ distritos: data }));
-  }
+    );
+    const data = await response.json();
+    await this.setState({
+      distritos: data
+    });
+  };
 
   render() {
     const { ficha, handleChangeSelect, handleChangeDatePicker } = this.props;
@@ -82,7 +91,7 @@ class LugarFechaNacimiento extends React.Component {
     };
 
     const { getFieldDecorator } = this.props.form;
-    const dateFormat = "DD-MM-YYYY";
+    const dateFormat = "YYYY-MM-DD";
 
     return (
       <Layout style={{ background: "white" }}>
@@ -90,8 +99,8 @@ class LugarFechaNacimiento extends React.Component {
           <Form.Item label="Fecha de Nacimiento">
             {getFieldDecorator("fechaNac", {
               initialValue:
-                ficha.fch_nacimiento_per == ""
-                  ? moment("25-11-1999", dateFormat)
+                ficha.fch_nacimiento_per === ""
+                  ? moment("1999-11-25", dateFormat)
                   : moment(ficha.fch_nacimiento_per, dateFormat),
               rules: [
                 {
@@ -104,7 +113,7 @@ class LugarFechaNacimiento extends React.Component {
               <DatePicker
                 defaultPickerValue={moment(ficha.fch_nacimiento_per)}
                 placeholder={"25-11-1999"}
-                format={dateFormat}
+                format={"DD-MM-YYYY"}
                 onChange={handleChangeDatePicker("fch_nacimiento_per")}
               />
             )}
@@ -113,7 +122,7 @@ class LugarFechaNacimiento extends React.Component {
           <Form.Item label="País">
             {getFieldDecorator("pais", {
               initialValue:
-                ficha.id_nac_pais_per == "" || ficha.id_nac_pais_per == null
+                ficha.id_nac_pais_per === "" || ficha.id_nac_pais_per == null
                   ? "9589"
                   : ficha.id_nac_pais_per,
               rules: [
@@ -145,7 +154,7 @@ class LugarFechaNacimiento extends React.Component {
           <Form.Item label="Ciudad">
             {getFieldDecorator("ciudad", {
               initialValue:
-                ficha.id_nac_ciudad_per == "" || ficha.id_nac_ciudad_per == null
+                ficha.id_nac_ciudad_per === "" || ficha.id_nac_ciudad_per == null
                   ? "2919"
                   : ficha.id_nac_ciudad_per,
               rules: [
@@ -168,7 +177,7 @@ class LugarFechaNacimiento extends React.Component {
           <Form.Item label="Provincia">
             {getFieldDecorator("provincia", {
               initialValue:
-                ficha.id_nac_provincia_per == "" ||
+                ficha.id_nac_provincia_per === "" ||
                 ficha.id_nac_provincia_per == null
                   ? "2301"
                   : ficha.id_nac_provincia_per,
@@ -194,7 +203,7 @@ class LugarFechaNacimiento extends React.Component {
           <Form.Item label="Distrito">
             {getFieldDecorator("distrito", {
               initialValue:
-                ficha.id_nac_distrito_per == "" ||
+                ficha.id_nac_distrito_per === "" ||
                 ficha.id_nac_distrito_per == null
                   ? "230101"
                   : ficha.id_nac_distrito_per,

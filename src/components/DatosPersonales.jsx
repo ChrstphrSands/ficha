@@ -1,8 +1,9 @@
 import React from "react";
-import { Form, Input, Select } from "antd";
-import { Layout } from "antd";
+import {Form, Input, Select} from "antd";
+import {Layout} from "antd";
 
-const { Option } = Select;
+const {Option} = Select;
+
 class DatosPersonales extends React.Component {
   continue = e => {
     e.preventDefault();
@@ -20,58 +21,66 @@ class DatosPersonales extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.getIdiomas();
-    this.getDiscapacidades();
-    this.getEstadosCiviles();
-    this.getTipoDocumento();
+  async componentDidMount() {
+    await this.getIdiomas();
+    await this.getDiscapacidades();
+    await this.getEstadosCiviles();
+    await this.getTipoDocumento()
   }
 
-  getIdiomas() {
-    fetch("http://localhost/FichaWeb/app/controller/idioma/read.php")
-      .then(response => response.json())
-      .then(data => this.setState({ nacionalidades: data }));
+  getIdiomas = async () => {
+    const response = await fetch(`http://localhost/FichaWeb/app/controller/idioma/read.php`);
+    const data = await response.json();
+    await this.setState({
+      nacionalidades: data
+    });
   }
 
-  getDiscapacidades() {
-    fetch("http://localhost/FichaWeb/app/controller/discapacidad/read.php")
-      .then(response => response.json())
-      .then(data => this.setState({ discapacidades: data }));
+  getDiscapacidades = async () => {
+    const response = await fetch("http://localhost/FichaWeb/app/controller/discapacidad/read.php");
+    const data = await response.json();
+    await this.setState({
+      discapacidades: data
+    })
   }
 
-  getEstadosCiviles() {
-    fetch("http://localhost/FichaWeb/app/controller/estadoCivil/read.php")
-      .then(response => response.json())
-      .then(data => this.setState({ estadosCiviles: data }));
+  getEstadosCiviles = async () => {
+    const response = await fetch("http://localhost/FichaWeb/app/controller/estadoCivil/read.php");
+    const data = await response.json();
+    await this.setState({
+      estadosCiviles: data
+    })
   }
 
-  getTipoDocumento() {
-    fetch("http://localhost/FichaWeb/app/controller/tipoDocumento/read.php")
-      .then(response => response.json())
-      .then(data => this.setState({ tiposDocumentos: data }));
+  getTipoDocumento = async () => {
+    const response = await fetch("http://localhost/FichaWeb/app/controller/tipoDocumento/read.php");
+    const data = await response.json();
+    await this.setState({
+      tiposDocumentos: data
+    });
   }
 
   render() {
-    const { ficha, handleChangeInput, handleChangeSelect } = this.props;
-    const { discapacidades } = this.state;
-    const { estadosCiviles } = this.state;
-    const { tiposDocumentos } = this.state;
+    const {ficha, handleChangeInput, handleChangeSelect} = this.props;
+    const {discapacidades} = this.state;
+    const {estadosCiviles} = this.state;
+    const {tiposDocumentos} = this.state;
 
     const formItemLayout = {
       labelCol: {
-        xs: { span: 24 },
-        sm: { span: 8 }
+        xs: {span: 24},
+        sm: {span: 8}
       },
       wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 16 }
+        xs: {span: 24},
+        sm: {span: 16}
       }
     };
 
-    const { getFieldDecorator } = this.props.form;
+    const {getFieldDecorator} = this.props.form;
 
     return (
-      <Layout style={{ background: "white" }}>
+      <Layout style={{background: "white"}}>
         <Form {...formItemLayout} onSubmit={this.handleSave}>
           <Form.Item label="Nombres">
             {getFieldDecorator("nombres", {
@@ -145,7 +154,7 @@ class DatosPersonales extends React.Component {
 
           <Form.Item label="Estado Civil">
             {getFieldDecorator("estadoCivil", {
-              initialValue: ficha.id_est_civil == "" ? "1" : ficha.id_est_civil,
+              initialValue: ficha.id_est_civil === "" ? "1" : ficha.id_est_civil,
               rules: [
                 {
                   required: true,
@@ -245,7 +254,7 @@ class DatosPersonales extends React.Component {
                   message: "Por favor ingrese eu E-mail"
                 }
               ]
-            })(<Input onChange={handleChangeInput("email_per")} />)}
+            })(<Input onChange={handleChangeInput("email_per")}/>)}
           </Form.Item>
 
           <Form.Item label="Celular">
@@ -257,12 +266,12 @@ class DatosPersonales extends React.Component {
                   message: "Por favor ingrese su número de celular"
                 }
               ]
-            })(<Input onChange={handleChangeInput("celular_per")} />)}
+            })(<Input onChange={handleChangeInput("celular_per")}/>)}
           </Form.Item>
           <Form.Item label="Teléfono">
             {getFieldDecorator("telefono", {
               initialValue: ficha.telefono_per
-            })(<Input onChange={handleChangeInput("telefono_per")} />)}
+            })(<Input onChange={handleChangeInput("telefono_per")}/>)}
           </Form.Item>
         </Form>
       </Layout>

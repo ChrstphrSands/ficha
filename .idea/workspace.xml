@@ -3,16 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="2d3d75c4-10d8-41f9-b204-b0eb8d552656" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Paso1/Paso1.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Paso1/Paso1.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Paso2/Paso2.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Paso2/Paso2.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Paso3/Paso3.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Paso3/Paso3.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Paso4/Paso4.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Paso4/Paso4.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Step1/Step1.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Step1/Step1.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/DatosPersonales.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DatosPersonales.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/LugarFechaNacimiento.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LugarFechaNacimiento.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/LugarResidenciaActual.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LugarResidenciaActual.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/NivelEducativo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NivelEducativo.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UsuarioForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UsuarioForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,37 +22,166 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Paso2/Paso2.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2958">
-              <caret line="104" column="28" selection-start-line="104" selection-start-column="28" selection-end-line="104" selection-end-column="28" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Paso3/Paso3.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4408">
-              <caret line="153" column="32" selection-start-line="153" selection-start-column="32" selection-end-line="153" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/UsuarioForm.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1960">
-              <caret line="279" column="51" lean-forward="true" selection-start-line="279" selection-start-column="51" selection-end-line="279" selection-end-column="51" />
+            <state relative-caret-position="604">
+              <caret line="275" column="24" lean-forward="true" selection-start-line="275" selection-start-column="24" selection-end-line="275" selection-end-column="24" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="n#!!block;n#constructor#0;n#UsuarioForm#0" />
+                <element signature="e#568#1945#0" />
+                <element signature="n#!!block;n#siguiente#0;n#UsuarioForm#0" />
+                <element signature="e#2040#2058#0" />
+                <element signature="n#!!block;n#regresar#0;n#UsuarioForm#0" />
+                <element signature="e#2160#2178#0" />
+                <element signature="e#2222#2273#0" />
+                <element signature="e#2318#2369#0" />
+                <element signature="e#2399#2552#0" />
+                <element signature="e#2442#2471#0" />
+                <element signature="e#2578#3342#0" />
+                <element signature="e#2791#3290#0" />
+                <element signature="e#2832#3058#0" />
+                <element signature="e#2875#3003#0" />
+                <element signature="e#3093#3280#0" />
+                <element signature="e#3136#3225#0" />
+                <element signature="n#!!block;n#confirm#0;n#UsuarioForm#0" />
+                <element signature="e#3369#3446#0" />
+                <element signature="e#3566#5838#0" />
+                <element signature="e#3567#5809#0" />
+                <element signature="e#3665#5672#0" />
+                <element signature="e#3733#5655#0" />
+                <element signature="e#3783#4206#0" />
+                <element signature="e#4221#4722#0" />
+                <element signature="e#4737#5070#0" />
+                <element signature="e#5085#5637#0" />
+                <element signature="e#5848#5977#0" />
+                <element signature="e#5875#5938#0" />
+                <element signature="e#6018#6057#0" />
+                <element signature="e#6105#6217#0" />
+                <element signature="e#6245#6468#0" />
+                <element signature="e#6346#6431#0" />
+                <element signature="e#6494#6632#0" />
+                <element signature="e#6514#6626#0" />
+                <element signature="e#6656#6811#0" />
+                <element signature="e#6845#7406#0" />
+                <element signature="e#6886#7402#0" />
+                <element signature="e#7014#7118#0" />
+                <element signature="e#7137#7305#0" />
+                <element signature="e#7205#7261#0" />
+                <element signature="e#9031#10405#0" />
+                <element signature="e#9144#10052#0" />
+                <element signature="e#10076#10230#0" />
+                <element signature="e#10138#10190#0" />
+                <element signature="e#10438#11704#0" />
+                <element signature="e#10551#11391#0" />
+                <element signature="e#11409#11563#0" />
+                <element signature="e#11471#11523#0" />
+                <element signature="e#11737#13115#0" />
+                <element signature="e#11850#12802#0" />
+                <element signature="e#12820#12974#0" />
+                <element signature="e#12882#12934#0" />
+                <element signature="e#13142#14481#0" />
+                <element signature="e#13254#14168#0" />
+                <element signature="e#14186#14340#0" />
+                <element signature="e#14248#14300#0" />
+                <element signature="e#14505#14672#0" />
+                <element signature="e#14578#14619#0" />
+                <element signature="e#14625#14668#0" />
+                <element signature="e#14716#15891#0" />
+                <element signature="e#14851#15707#0" />
+                <element signature="e#15731#15885#0" />
+                <element signature="e#15793#15845#0" />
+                <element signature="e#15932#16822#0" />
+                <element signature="e#16051#16638#0" />
+                <element signature="e#16662#16816#0" />
+                <element signature="e#16724#16776#0" />
+                <element signature="e#16845#16903#0" />
+                <element signature="e#16865#16897#0" />
+                <element signature="e#16933#18494#0" />
+                <element signature="e#17130#18344#0" />
+                <element signature="e#17203#18285#0" />
+                <element signature="e#18379#18490#0" />
+                <element signature="e#18392#18457#0" />
+                <element signature="e#18440#18483#0" />
+                <element signature="e#18529#19700#0" />
+                <element signature="e#18742#19648#0" />
+                <element signature="e#18783#19554#0" />
+                <element signature="e#18994#19539#0" />
+                <element signature="e#19594#19638#0" />
+                <element signature="n#!!block;n#getIdFichaPersona#0;n#UsuarioForm#0" />
+                <element signature="e#19938#20084#0" />
+                <element signature="e#19979#20074#0" />
+                <element signature="e#20007#20060#0" />
+                <element signature="n#!!block;n#getDatosPersonales#0;n#UsuarioForm#0" />
+                <element signature="e#20386#20859#0" />
+                <element signature="n#!!block;n#getIdDatosPersonales#0;n#UsuarioForm#0" />
+                <element signature="e#20948#21403#0" />
+                <element signature="e#21165#21345#0" />
+                <element signature="e#21208#21333#0" />
+                <element signature="e#21238#21317#0" />
+                <element signature="n#!!block;n#getLugarNacimiento#0;n#UsuarioForm#0" />
+                <element signature="e#21657#21983#0" />
+                <element signature="n#!!block;n#getLugarResidencia#0;n#UsuarioForm#0" />
+                <element signature="e#22247#22615#0" />
+                <element signature="n#!!block;n#getNivelEducativo#0;n#UsuarioForm#0" />
+                <element signature="e#22880#23189#0" />
+                <element signature="e#23228#23356#0" />
+                <element signature="e#23261#23310#0" />
+                <element signature="e#23316#23352#0" />
+                <element signature="e#23375#23882#0" />
+                <element signature="e#23412#23802#0" />
+                <element signature="e#23443#23498#0" />
+                <element signature="e#23514#23787#0" />
+                <element signature="e#23557#23777#0" />
+                <element signature="e#23618#23763#0" />
+                <element signature="e#23829#23876#0" />
+                <element signature="n#!!block;n#render#0;n#UsuarioForm#0" />
+                <element signature="e#25222#26353#0" />
+                <element signature="e#26373#27534#0" />
+                <element signature="e#26381#26632#0" />
+                <element signature="e#26447#26614#0" />
+                <element signature="e#26640#26972#0" />
+                <element signature="e#26717#26954#0" />
+                <element signature="e#26980#27247#0" />
+                <element signature="e#27056#27229#0" />
+                <element signature="e#27255#27528#0" />
+                <element signature="e#27344#27510#0" />
+                <element signature="e#27564#27719#0" />
+                <element signature="e#27582#27637#0" />
+                <element signature="e#27657#27713#0" />
+                <element signature="e#27791#32992#0" />
+                <element signature="e#27838#27954#0" />
+                <element signature="e#27963#28184#0" />
+                <element signature="e#28193#32976#0" />
+                <element signature="e#28237#28385#0" />
+                <element signature="e#28465#32961#0" />
+                <element signature="e#28544#28740#0" />
+                <element signature="e#28812#29002#0" />
+                <element signature="e#29076#29257#0" />
+                <element signature="e#29285#32944#0" />
+                <element signature="e#29573#30979#0" />
+                <element signature="e#29591#29972#0" />
+                <element signature="e#29645#29949#0" />
+                <element signature="e#29990#30529#0" />
+                <element signature="e#30044#30506#0" />
+                <element signature="e#30547#30963#0" />
+                <element signature="e#30601#30940#0" />
+                <element signature="e#31009#32134#0" />
+                <element signature="e#31052#31695#0" />
+                <element signature="e#31138#31430#0" />
+                <element signature="e#31225#31410#0" />
+                <element signature="e#31249#31388#0" />
+                <element signature="e#31453#31645#0" />
+                <element signature="e#31712#32112#0" />
+                <element signature="e#31809#32048#0" />
+                <element signature="e#31838#32028#0" />
+                <element signature="e#31862#32006#0" />
+                <element signature="e#32149#32463#0" />
+                <element signature="e#32201#32442#0" />
+                <element signature="e#32478#32697#0" />
+                <element signature="e#32500#32676#0" />
+                <element signature="e#32712#32923#0" />
+                <element signature="e#32758#32902#0" />
               </folding>
             </state>
           </provider>
@@ -64,11 +190,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/DatosPersonales.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2175">
-              <caret line="77" column="63" selection-start-line="77" selection-start-column="63" selection-end-line="77" selection-end-column="63" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="4774">
+              <caret line="156" column="50" selection-start-line="156" selection-start-column="50" selection-end-line="156" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -76,8 +199,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/LugarResidenciaActual.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2900">
-              <caret line="101" column="30" selection-start-line="101" selection-start-column="30" selection-end-line="101" selection-end-column="30" />
+            <state relative-caret-position="744">
+              <caret line="25" column="6" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -88,11 +211,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/NivelEducativo.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2871">
-              <caret line="100" column="33" selection-start-line="100" selection-start-column="33" selection-end-line="100" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="6386">
+              <caret line="207" column="22" selection-start-line="207" selection-start-column="22" selection-end-line="207" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -100,35 +220,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/LugarFechaNacimiento.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2349">
-              <caret line="83" column="34" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Paso1/Paso1.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6467">
-              <caret line="225" column="32" selection-start-line="225" selection-start-column="32" selection-end-line="225" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/LoginPage/LoginPage.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="29">
-              <caret line="1" column="47" selection-start-line="1" selection-start-column="47" selection-end-line="1" selection-end-column="47" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="62">
+              <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -142,8 +235,19 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>save</find>
+      <find>verificado</find>
+      <find>saveFicha</find>
+      <find>updateFi</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HierarchyBrowserManager">
+    <option name="SORT_ALPHABETICALLY" value="true" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/Paso1/Paso1.jsx" root0="SKIP_INSPECTION" />
@@ -168,31 +272,48 @@
         <option value="$PROJECT_DIR$/src/Paso1/Paso1.jsx" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/Paso2/Paso2.jsx" />
-        <option value="$PROJECT_DIR$/src/components/LugarResidenciaActual.jsx" />
-        <option value="$PROJECT_DIR$/src/components/DatosPersonales.jsx" />
         <option value="$PROJECT_DIR$/src/LoginPage/LoginPage.jsx" />
         <option value="$PROJECT_DIR$/src/components/NivelEducativo.jsx" />
+        <option value="$PROJECT_DIR$/src/components/DatosPersonales.jsx" />
+        <option value="$PROJECT_DIR$/src/components/LugarResidenciaActual.jsx" />
         <option value="$PROJECT_DIR$/src/components/LugarFechaNacimiento.jsx" />
         <option value="$PROJECT_DIR$/src/components/UsuarioForm.jsx" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="2136" />
+    <option name="x" value="-7" />
+    <option name="width" value="1934" />
+    <option name="height" value="2127" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ficha" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ficha" type="72ca9032:PsiDirectoryNodeCustom" />
+            </path>
+            <path>
+              <item name="ficha" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ficha" type="72ca9032:PsiDirectoryNodeCustom" />
+              <item name="src" type="72ca9032:PsiDirectoryNodeCustom" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../test-react" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/node_modules/.bin" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -201,7 +322,9 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.TypeScript" />
+    <property name="prettierjs.PrettierConfiguration.NodeInterpreter" value="project" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="D:\Projects\ficha\node_modules\.bin" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -216,7 +339,7 @@
     </option>
   </component>
   <component name="SvnConfiguration">
-    <configuration />
+    <configuration>C:\Users\tzoph\AppData\Roaming\Subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -238,19 +361,22 @@
       <workItem from="1562944007480" duration="392000" />
       <workItem from="1562992901664" duration="3458000" />
       <workItem from="1563042517672" duration="16000" />
+      <workItem from="1563641879740" duration="11496000" />
+      <workItem from="1563698758956" duration="4059000" />
+      <workItem from="1563728095424" duration="11694000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30878000" />
+    <option name="totallyTimeSpent" value="58127000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="2136" extended-state="0" />
+    <frame x="-7" y="0" width="1934" height="2127" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.17827004" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="npm" order="2" side_tool="true" />
-      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4981203" weight="0.1782284" />
+      <window_info id="npm" order="1" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Structure" order="3" sideWeight="0.5018797" weight="0.17774262" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32977644" />
@@ -261,10 +387,10 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32977644" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5010548" side_tool="true" weight="0.28302845" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49894515" weight="0.28174" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49894515" visible="true" weight="0.18902439" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.2497332" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,16 +446,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Paso2/Paso2.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2958">
+        <state relative-caret-position="3162">
           <caret line="104" column="28" selection-start-line="104" selection-start-column="28" selection-end-line="104" selection-end-column="28" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -339,48 +458,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Paso3/Paso3.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4408">
+        <state relative-caret-position="4712">
           <caret line="153" column="32" selection-start-line="153" selection-start-column="32" selection-end-line="153" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/DatosPersonales.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2175">
-          <caret line="77" column="63" selection-start-line="77" selection-start-column="63" selection-end-line="77" selection-end-column="63" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/LugarResidenciaActual.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2900">
-          <caret line="101" column="30" selection-start-line="101" selection-start-column="30" selection-end-line="101" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/NivelEducativo.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2871">
-          <caret line="100" column="33" selection-start-line="100" selection-start-column="33" selection-end-line="100" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/LugarFechaNacimiento.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2349">
-          <caret line="83" column="34" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -389,7 +468,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Paso1/Paso1.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6467">
+        <state relative-caret-position="6913">
           <caret line="225" column="32" selection-start-line="225" selection-start-column="32" selection-end-line="225" selection-end-column="32" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -399,7 +478,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LoginPage/LoginPage.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
+        <state relative-caret-position="31">
           <caret line="1" column="47" selection-start-line="1" selection-start-column="47" selection-end-line="1" selection-end-column="47" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -407,13 +486,204 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="19" column="26" lean-forward="true" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/UsuarioForm.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1960">
-          <caret line="279" column="51" lean-forward="true" selection-start-line="279" selection-start-column="51" selection-end-line="279" selection-end-column="51" />
+        <state relative-caret-position="604">
+          <caret line="275" column="24" lean-forward="true" selection-start-line="275" selection-start-column="24" selection-end-line="275" selection-end-column="24" />
+          <folding>
+            <element signature="n#!!block;n#constructor#0;n#UsuarioForm#0" />
+            <element signature="e#568#1945#0" />
+            <element signature="n#!!block;n#siguiente#0;n#UsuarioForm#0" />
+            <element signature="e#2040#2058#0" />
+            <element signature="n#!!block;n#regresar#0;n#UsuarioForm#0" />
+            <element signature="e#2160#2178#0" />
+            <element signature="e#2222#2273#0" />
+            <element signature="e#2318#2369#0" />
+            <element signature="e#2399#2552#0" />
+            <element signature="e#2442#2471#0" />
+            <element signature="e#2578#3342#0" />
+            <element signature="e#2791#3290#0" />
+            <element signature="e#2832#3058#0" />
+            <element signature="e#2875#3003#0" />
+            <element signature="e#3093#3280#0" />
+            <element signature="e#3136#3225#0" />
+            <element signature="n#!!block;n#confirm#0;n#UsuarioForm#0" />
+            <element signature="e#3369#3446#0" />
+            <element signature="e#3566#5838#0" />
+            <element signature="e#3567#5809#0" />
+            <element signature="e#3665#5672#0" />
+            <element signature="e#3733#5655#0" />
+            <element signature="e#3783#4206#0" />
+            <element signature="e#4221#4722#0" />
+            <element signature="e#4737#5070#0" />
+            <element signature="e#5085#5637#0" />
+            <element signature="e#5848#5977#0" />
+            <element signature="e#5875#5938#0" />
+            <element signature="e#6018#6057#0" />
+            <element signature="e#6105#6217#0" />
+            <element signature="e#6245#6468#0" />
+            <element signature="e#6346#6431#0" />
+            <element signature="e#6494#6632#0" />
+            <element signature="e#6514#6626#0" />
+            <element signature="e#6656#6811#0" />
+            <element signature="e#6845#7406#0" />
+            <element signature="e#6886#7402#0" />
+            <element signature="e#7014#7118#0" />
+            <element signature="e#7137#7305#0" />
+            <element signature="e#7205#7261#0" />
+            <element signature="e#9031#10405#0" />
+            <element signature="e#9144#10052#0" />
+            <element signature="e#10076#10230#0" />
+            <element signature="e#10138#10190#0" />
+            <element signature="e#10438#11704#0" />
+            <element signature="e#10551#11391#0" />
+            <element signature="e#11409#11563#0" />
+            <element signature="e#11471#11523#0" />
+            <element signature="e#11737#13115#0" />
+            <element signature="e#11850#12802#0" />
+            <element signature="e#12820#12974#0" />
+            <element signature="e#12882#12934#0" />
+            <element signature="e#13142#14481#0" />
+            <element signature="e#13254#14168#0" />
+            <element signature="e#14186#14340#0" />
+            <element signature="e#14248#14300#0" />
+            <element signature="e#14505#14672#0" />
+            <element signature="e#14578#14619#0" />
+            <element signature="e#14625#14668#0" />
+            <element signature="e#14716#15891#0" />
+            <element signature="e#14851#15707#0" />
+            <element signature="e#15731#15885#0" />
+            <element signature="e#15793#15845#0" />
+            <element signature="e#15932#16822#0" />
+            <element signature="e#16051#16638#0" />
+            <element signature="e#16662#16816#0" />
+            <element signature="e#16724#16776#0" />
+            <element signature="e#16845#16903#0" />
+            <element signature="e#16865#16897#0" />
+            <element signature="e#16933#18494#0" />
+            <element signature="e#17130#18344#0" />
+            <element signature="e#17203#18285#0" />
+            <element signature="e#18379#18490#0" />
+            <element signature="e#18392#18457#0" />
+            <element signature="e#18440#18483#0" />
+            <element signature="e#18529#19700#0" />
+            <element signature="e#18742#19648#0" />
+            <element signature="e#18783#19554#0" />
+            <element signature="e#18994#19539#0" />
+            <element signature="e#19594#19638#0" />
+            <element signature="n#!!block;n#getIdFichaPersona#0;n#UsuarioForm#0" />
+            <element signature="e#19938#20084#0" />
+            <element signature="e#19979#20074#0" />
+            <element signature="e#20007#20060#0" />
+            <element signature="n#!!block;n#getDatosPersonales#0;n#UsuarioForm#0" />
+            <element signature="e#20386#20859#0" />
+            <element signature="n#!!block;n#getIdDatosPersonales#0;n#UsuarioForm#0" />
+            <element signature="e#20948#21403#0" />
+            <element signature="e#21165#21345#0" />
+            <element signature="e#21208#21333#0" />
+            <element signature="e#21238#21317#0" />
+            <element signature="n#!!block;n#getLugarNacimiento#0;n#UsuarioForm#0" />
+            <element signature="e#21657#21983#0" />
+            <element signature="n#!!block;n#getLugarResidencia#0;n#UsuarioForm#0" />
+            <element signature="e#22247#22615#0" />
+            <element signature="n#!!block;n#getNivelEducativo#0;n#UsuarioForm#0" />
+            <element signature="e#22880#23189#0" />
+            <element signature="e#23228#23356#0" />
+            <element signature="e#23261#23310#0" />
+            <element signature="e#23316#23352#0" />
+            <element signature="e#23375#23882#0" />
+            <element signature="e#23412#23802#0" />
+            <element signature="e#23443#23498#0" />
+            <element signature="e#23514#23787#0" />
+            <element signature="e#23557#23777#0" />
+            <element signature="e#23618#23763#0" />
+            <element signature="e#23829#23876#0" />
+            <element signature="n#!!block;n#render#0;n#UsuarioForm#0" />
+            <element signature="e#25222#26353#0" />
+            <element signature="e#26373#27534#0" />
+            <element signature="e#26381#26632#0" />
+            <element signature="e#26447#26614#0" />
+            <element signature="e#26640#26972#0" />
+            <element signature="e#26717#26954#0" />
+            <element signature="e#26980#27247#0" />
+            <element signature="e#27056#27229#0" />
+            <element signature="e#27255#27528#0" />
+            <element signature="e#27344#27510#0" />
+            <element signature="e#27564#27719#0" />
+            <element signature="e#27582#27637#0" />
+            <element signature="e#27657#27713#0" />
+            <element signature="e#27791#32992#0" />
+            <element signature="e#27838#27954#0" />
+            <element signature="e#27963#28184#0" />
+            <element signature="e#28193#32976#0" />
+            <element signature="e#28237#28385#0" />
+            <element signature="e#28465#32961#0" />
+            <element signature="e#28544#28740#0" />
+            <element signature="e#28812#29002#0" />
+            <element signature="e#29076#29257#0" />
+            <element signature="e#29285#32944#0" />
+            <element signature="e#29573#30979#0" />
+            <element signature="e#29591#29972#0" />
+            <element signature="e#29645#29949#0" />
+            <element signature="e#29990#30529#0" />
+            <element signature="e#30044#30506#0" />
+            <element signature="e#30547#30963#0" />
+            <element signature="e#30601#30940#0" />
+            <element signature="e#31009#32134#0" />
+            <element signature="e#31052#31695#0" />
+            <element signature="e#31138#31430#0" />
+            <element signature="e#31225#31410#0" />
+            <element signature="e#31249#31388#0" />
+            <element signature="e#31453#31645#0" />
+            <element signature="e#31712#32112#0" />
+            <element signature="e#31809#32048#0" />
+            <element signature="e#31838#32028#0" />
+            <element signature="e#31862#32006#0" />
+            <element signature="e#32149#32463#0" />
+            <element signature="e#32201#32442#0" />
+            <element signature="e#32478#32697#0" />
+            <element signature="e#32500#32676#0" />
+            <element signature="e#32712#32923#0" />
+            <element signature="e#32758#32902#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/DatosPersonales.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4774">
+          <caret line="156" column="50" selection-start-line="156" selection-start-column="50" selection-end-line="156" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/LugarResidenciaActual.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="744">
+          <caret line="25" column="6" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/NivelEducativo.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6386">
+          <caret line="207" column="22" selection-start-line="207" selection-start-column="22" selection-end-line="207" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/LugarFechaNacimiento.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="62">
+          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
         </state>
       </provider>
     </entry>

@@ -21,7 +21,8 @@ class LugarResidenciaActual extends React.Component {
     this.state = {
       ciudades: [],
       provincias: [],
-      distritos: []
+      distritos: [],
+      dependencias: []
     };
   }
 
@@ -29,6 +30,7 @@ class LugarResidenciaActual extends React.Component {
     this.getCiudades();
     this.getProvincias();
     this.getDistritos();
+    this.getDependencias();
   }
 
   getCiudades() {
@@ -55,10 +57,18 @@ class LugarResidenciaActual extends React.Component {
       .then(data => this.setState({ distritos: data }));
   }
 
+  getDependencias() {
+    fetch(
+      "http://localhost/FichaWeb/app/controller/dependenciaVivienda/read.php"
+    )
+      .then(response => response.json())
+      .then(data => this.setState({ dependencias: data }));
+  }
+
   render() {
-    const { ciudades } = this.state;
-    const { provincias } = this.state;
-    const { distritos } = this.state;
+    const { ciudades, provincias, distritos, dependencias } = this.state;
+    // const { provincias } = this.state;
+    // const { distritos } = this.state;
     const { ficha, handleChangeInput, handleChangeSelect } = this.props;
 
     const formItemLayout = {
@@ -80,7 +90,7 @@ class LugarResidenciaActual extends React.Component {
           <Form.Item label="Ciudad">
             {getFieldDecorator("ciudad", {
               initialValue:
-                ficha.id_res_ciudad_per == "" || ficha.id_res_ciudad_per == null
+                ficha.id_res_ciudad_per === "" || ficha.id_res_ciudad_per == null
                   ? "2919"
                   : ficha.id_res_ciudad_per,
               rules: [
@@ -103,7 +113,7 @@ class LugarResidenciaActual extends React.Component {
           <Form.Item label="Provincia">
             {getFieldDecorator("provincia", {
               initialValue:
-                ficha.id_res_provincia_per == "" ||
+                ficha.id_res_provincia_per === "" ||
                 ficha.id_res_provincia_per == null
                   ? "2301"
                   : ficha.id_res_provincia_per,
@@ -129,7 +139,7 @@ class LugarResidenciaActual extends React.Component {
           <Form.Item label="Distrito">
             {getFieldDecorator("distrito", {
               initialValue:
-                ficha.id_res_distrito_per == "" ||
+                ficha.id_res_distrito_per === "" ||
                 ficha.id_res_distrito_per == null
                   ? "230101"
                   : ficha.id_res_distrito_per,
@@ -197,6 +207,33 @@ class LugarResidenciaActual extends React.Component {
                 }
               ]
             })(<Input onChange={handleChangeInput("res_telefono_per")} />)}
+          </Form.Item>
+
+          <Form.Item label="Vive en:">
+            {getFieldDecorator("dependencia", {
+              initialValue:
+                ficha.id_dependencia_vivienda === "" ||
+                ficha.id_dependencia_vivienda == null
+                  ? "1"
+                  : ficha.id_dependencia_vivienda,
+              rules: [
+                {
+                  required: true,
+                  message: "Por favor seleccione una dependencia."
+                }
+              ]
+            })(
+              <Select
+                placeholder={"Seleccione:"}
+                onChange={handleChangeSelect("id_dependencia_vivienda")}
+              >
+                {dependencias.map(dependencia => (
+                  <Option value={dependencia.id_dependencia_vivienda}>
+                    {dependencia.descripcion}
+                  </Option>
+                ))}
+              </Select>
+            )}
           </Form.Item>
         </Form>
       </Layout>
