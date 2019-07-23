@@ -215,6 +215,13 @@ class NivelEducativo extends React.Component {
               <Select
                 placeholder={"Seleccione la Institución Educativa"}
                 onChange={handleChangeSelect("idIEdu")}
+                showSearch={true}
+                optionFilterProp={"children"}
+                filterOption={(input, option) =>
+                  option.props.children
+                    .toLowerCase()
+                    .indexOf(input.toLowerCase()) >= 0
+                }
               >
                 {instituciones.map(institucion => (
                   <Option value={institucion.IdiEdu}>

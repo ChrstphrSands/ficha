@@ -55,7 +55,7 @@ class UsuarioForm extends React.Component {
 
       cod_univ: "",
       cod_per: "",
-      terminos: "",
+      terminos: false,
       correo_verificado: false,
       correo_fecha_verificacion: "",
       sms_verificado: "",
@@ -66,7 +66,10 @@ class UsuarioForm extends React.Component {
       bloqued: false,
       visibleSave: true,
       visibleModal: false,
+      visibleModalCorreo: false,
       visibleSend: false,
+      visibleSendCorreo: false,
+      visibleSaveCorreo: true,
       disableNumero: false,
 
       fichaPersona: true,
@@ -75,19 +78,28 @@ class UsuarioForm extends React.Component {
       intentos: 0,
       existe: false,
 
-      mensaje: ""
+      mensaje: "",
+      confirmacion: 0,
+      codigo_correo: 0,
+      codigo_sms: 0
     };
   }
 
   codigo = "";
 
-  siguiente() {
-    const paso = this.state.paso + 1;
-    this.setState({
-      paso
-    });
-    this.updateData();
-  }
+  siguiente = async () => {
+    if (this.state.correo_verificado == true) {
+      const paso = this.state.paso + 1;
+      await this.setState(
+        {
+          paso
+        },
+        this.updateData()
+      );
+    } else {
+      this.showModalCorreo();
+    }
+  };
 
   regresar() {
     const paso = this.state.paso - 1;
@@ -105,6 +117,9 @@ class UsuarioForm extends React.Component {
   };
 
   handlePressEnter = () => {
+    this.setState({
+      paso: 0
+    });
     this.getFichaPersona();
     //
 
@@ -150,7 +165,7 @@ class UsuarioForm extends React.Component {
     //   this.getFichaPersona();
     // } else
 
-    if (this.state.existe === true && this.state.correo_verificado === false) {
+    if (this.state.existe === true && this.state.terminos == false) {
       Modal.confirm({
         title: "Compromisos de las normas establecidas en la UPT",
         content: (
@@ -193,7 +208,7 @@ class UsuarioForm extends React.Component {
         ),
         okText: "Si acepto",
         cancelText: "No acepto",
-        onOk: this.handleOkCorreo,
+        onOk: this.handleOkTerminos,
         width: "75%"
       });
     } else if (this.state.existe === false) {
@@ -204,10 +219,10 @@ class UsuarioForm extends React.Component {
     }
   }
 
-  handleOkCorreo = () => {
+  handleOkTerminos = () => {
     this.setState(
       {
-        correo_verificado: true
+        terminos: true
       },
       this.state.id_ficha === 1
         ? this.saveFichaActualizacionPersona
@@ -231,6 +246,111 @@ class UsuarioForm extends React.Component {
     }, 2000);
 
     await this.timer();
+    await this.sendSms();
+  };
+
+  handleOkCorreo = async () => {
+    await this.setState({ loading: true });
+    setTimeout(() => {
+      this.setState({
+        loading: false,
+        visibleSendCorreo: true,
+        visibleSaveCorreo: false
+      });
+    }, 2000);
+    await this.sendEmail();
+  };
+
+  generateCodigo = () => {
+    let max = 9999;
+    let min = 1000;
+    return Math.floor(Math.random() * (max + 1 - min) + min);
+  };
+
+  sendEmail = async () => {
+    const url = "http://localhost/FichaWeb/app/controller/email/send.php";
+
+    const codigo = this.generateCodigo();
+
+    const data = {
+      email_per: this.state.email_per,
+      codigo: codigo
+    };
+    await fetch(url, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+      .then(res => res.json())
+      .catch(error => console.log(`Error: ${error}`));
+
+    this.saveEmail(codigo);
+  };
+
+  sendSms = async () => {
+    const url = "http://localhost/FichaWeb/app/controller/sms/send.php";
+
+    const codigo = this.generateCodigo();
+
+    const data = {
+      celular_numero: this.state.celular_per,
+      celular_mensaje: codigo
+    };
+    await fetch(url, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+      .then(res => res.json())
+      .catch(error => console.log(`Error: ${error}`));
+
+    this.saveSms(codigo);
+  };
+
+  saveEmail = async codigo => {
+    const url =
+      "http://localhost/FichaWeb/app/controller/fichaActualizacionPersona/update.php";
+
+    const data = {
+      id_ficha: this.state.id_ficha,
+      codigo_correo: codigo
+    };
+    await fetch(url, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+      .then(res => res.json())
+      .catch(error => console.log(`Error: ${error}`));
+  };
+
+  saveSms = async codigo => {
+    const url =
+      "http://localhost/FichaWeb/app/controller/fichaActualizacionPersona/update.php";
+
+    const data = {
+      id_ficha: this.state.id_ficha,
+      codigo_sms: codigo
+    };
+    await fetch(url, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+      .then(res => res.json())
+      .catch(error => console.log(`Error: ${error}`));
   };
 
   handleCancel = () => {
@@ -242,31 +362,125 @@ class UsuarioForm extends React.Component {
     });
   };
 
-  handleSave = () => {
-    this.setState({ visibleSave: false, visibleSend: true });
-    this.saveLugarNacimiento();
-    this.saveLugarResidencia();
-    this.saveEducacion();
+  handleCancelCorreo = () => {
+    this.setState({
+      visibleModalCorreo: false,
+      visibleSendCorreo: false,
+      visibleSaveCorreo: true
+    });
   };
 
-  saveCorreoVerificado = () => {
-    if (!this.state.correo_verificado) {
-      const url =
-        "http://localhost/FichaWeb/app/controller/fichaActualizacionPersona/update.php";
-      const data = {
-        id_ficha: this.state.id_ficha,
-        correo_verificado: this.state.correo_verificado
-      };
-      fetch(url, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-      })
-        .then(res => res.json())
-        .catch(error => console.log(`Error: ${error}`));
+  getCodigoSms = async () => {
+    await fetch(
+      `http://localhost/FichaWeb/app/controller/fichaActualizacionPersona/read.php?CodUniv=${
+        this.state.cod_univ
+      }`
+    )
+      .then(response =>
+        response.json().then(data => {
+          if (response.status === 200) {
+            this.setState({
+              codigo_sms: data.codigo_sms
+            });
+          }
+        })
+      )
+      .catch(err => console.log(err));
+  };
+
+  handleSave = async () => {
+    await this.getCodigoSms();
+    if (this.state.codigo_sms === this.state.confirmacion) {
+      await this.setState({
+        visibleSave: false,
+        visibleSend: true,
+        sms_verificado: true,
+        visibleModal: true,
+        intentos: 0,
+        confirmacion: 0
+      });
+      // this.saveLugarNacimiento();
+      // this.saveLugarResidencia();
+      // this.saveEducacion();
+      if (this.state.sms_verificado) {
+        const localTime = moment.utc(moment()).toDate();
+        const url =
+          "http://localhost/FichaWeb/app/controller/fichaActualizacionPersona/update.php";
+        const data = {
+          id_ficha: this.state.id_ficha,
+          sms_verificado: true,
+          sms_fecha_verificacion: moment(localTime).format(
+            "YYYY-MM-DD HH:mm:ss"
+          )
+        };
+        fetch(url, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        })
+          .then(res => res.json())
+          .catch(error => console.log(`Error: ${error}`));
+      }
+    } else {
+      console.log("No son iguales");
+    }
+  };
+
+  getCodigoCorreo = async () => {
+    await fetch(
+      `http://localhost/FichaWeb/app/controller/fichaActualizacionPersona/read.php?CodUniv=${
+        this.state.cod_univ
+      }`
+    )
+      .then(response =>
+        response.json().then(data => {
+          if (response.status === 200) {
+            this.setState({
+              codigo_correo: data.codigo_correo
+            });
+          }
+        })
+      )
+      .catch(err => console.log(err));
+  };
+
+  handleSaveCorreoVerificado = async () => {
+    await this.getCodigoCorreo();
+    if (this.state.codigo_correo === this.state.confirmacion) {
+      await this.setState({
+        correo_verificado: true,
+        visibleModalCorreo: false,
+        confirmacion: 0
+      });
+
+      if (this.state.correo_verificado) {
+        const localTime = moment.utc(moment()).toDate();
+        const url =
+          "http://localhost/FichaWeb/app/controller/fichaActualizacionPersona/update.php";
+        const data = {
+          id_ficha: this.state.id_ficha,
+          correo_verificado: true,
+          correo_fecha_verificacion: moment(localTime).format(
+            "YYYY-MM-DD HH:mm:ss"
+          )
+        };
+        fetch(url, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        })
+          .then(res => res.json())
+          .catch(error => console.log(`Error: ${error}`));
+      }
+      this.siguiente();
+    } else {
+      console.log("No son iguales");
     }
   };
 
@@ -279,11 +493,11 @@ class UsuarioForm extends React.Component {
       id_ficha: this.state.id_ficha,
       cod_univ: this.state.cod_univ,
       cod_per: this.state.cod_per,
-      terminos: false, //TODO Agregar this.state.terminos
-      correo_verificado: this.state.correo_verificado,
-      correo_fecha_verificacion: moment().local(),
+      terminos: this.state.terminos, //TODO Agregar this.state.terminos
+      correo_verificado: false,
+      correo_fecha_verificacion: moment(),
       sms_verificado: false,
-      sms_fecha_verificacion: moment().local(),
+      sms_fecha_verificacion: moment(),
       estado: false
     };
 
@@ -299,7 +513,7 @@ class UsuarioForm extends React.Component {
     // .catch(error => console.log(`Error: ${error}`))
     // .then(res => console.log(`Sucess: ${res}`));
 
-    this.getIdFichaPersona();
+    await this.getIdFichaPersona();
   };
 
   saveDatosPersonales = async () => {
@@ -485,8 +699,16 @@ class UsuarioForm extends React.Component {
   updateData = () => {
     if (this.state.paso === 0 && this.state.id_datos_personales === 0) {
       this.saveDatosPersonales();
-    } else {
+    } else if (this.state.paso === 0 && this.state.id_datos_personales !== 0) {
       this.updateDatosPersonales();
+    } else if (this.state.paso === 1 && this.state.id_nacimiento == null) {
+      this.saveLugarNacimiento();
+    } else if (this.state.paso === 1 && this.state.id_nacimiento !== 0) {
+      this.updateLugarNacimiento();
+    } else if (this.state.paso === 2 && this.state.id_direccion == null) {
+      this.saveLugarResidencia();
+    } else if (this.state.paso === 2 && this.state.id_direccion !== 0) {
+      this.updateLugarResidencia();
     }
   };
 
@@ -503,11 +725,7 @@ class UsuarioForm extends React.Component {
         this.state.terminos === "" || this.state.terminos == null
           ? 1
           : this.state.terminos,
-      correo_verificado:
-        this.state.correo_verificado === "" ||
-        this.state.correo_verificado == null
-          ? false
-          : this.state.correo_verificado,
+      correo_verificado: this.state.correo_verificado,
       correo_fecha_verificacion:
         this.state.correo_fecha_verificacion === ""
           ? "2019/17/7 12:39"
@@ -560,9 +778,93 @@ class UsuarioForm extends React.Component {
     });
   };
 
+  updateLugarNacimiento = async () => {
+    let url = "";
+    url = "http://localhost/FichaWeb/app/controller/lugarNacimiento/update.php";
+
+    const data = {
+      id_nacimiento: this.state.id_nacimiento,
+      id_ficha: this.state.id_ficha,
+      fecha_nacimiento: this.state.fch_nacimiento_per,
+      id_nac_cod_pais: this.state.id_nac_pais_per,
+      id_nac_cod_ciudad: this.state.id_nac_ciudad_per,
+      id_nac_cod_provincia: this.state.id_nac_provincia_per,
+      id_nac_cod_distrito: this.state.id_nac_distrito_per
+    };
+
+    await fetch(url, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+  };
+
+  updateLugarResidencia = async () => {
+    let url = "";
+    url = "http://localhost/FichaWeb/app/controller/lugarResidencia/update.php";
+
+    const data = {
+      id_direccion: this.state.id_direccion,
+      id_ficha: this.state.id_ficha,
+      id_dir_cod_ciudad: this.state.id_res_ciudad_per,
+      id_dir_cod_provincia: this.state.id_res_provincia_per,
+      id_dir_cod_distrito: this.state.id_res_distrito_per,
+      direccion: this.state.res_direccion_per,
+      referencia: this.state.res_referencia_per,
+      telefono_referencia: this.state.res_telefono_per
+    };
+
+    await fetch(url, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+  };
+
+  updateEducacion = async () => {
+    let url = "";
+    url = "http://localhost/FichaWeb/app/controller/nivelEducativo/update.php";
+
+    const data = {
+      id_educacion: this.state.id_educacion,
+      id_ficha: this.state.id_ficha,
+      idEdu: this.state.idIEdu,
+      id_educ_cod_pais: this.state.id_educ_pais_per,
+      id_educ_cod_ciudad: this.state.id_educ_ciudad_per,
+      id_educ_cod_provincia: this.state.id_educ_provincia_per,
+      id_educ_cod_distrio: this.state.id_educ_distrito_per
+    };
+
+    await fetch(url, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+  };
+
   showModal = () => {
+    this.setState(
+      {
+        visibleModal: true
+      },
+      this.state.id_educacion === null
+        ? this.saveEducacion
+        : this.updateEducacion
+    );
+  };
+
+  showModalCorreo = () => {
     this.setState({
-      visibleModal: true
+      visibleModalCorreo: true
     });
   };
 
@@ -604,7 +906,9 @@ class UsuarioForm extends React.Component {
           correo_verificado: false,
           sms_verificado: false,
           estado: false,
-          existe: true
+          existe: true,
+          id_datos_personales: 0,
+          terminos: false
         },
         this.confirm
       );
@@ -612,8 +916,6 @@ class UsuarioForm extends React.Component {
       const res = await response.json();
       this.setState(
         {
-          correo_verificado: false,
-          existe: false,
           mensaje: res.message
         },
         this.confirm
@@ -638,11 +940,13 @@ class UsuarioForm extends React.Component {
               {
                 id_ficha: data.id_ficha,
                 id_datos_personales: data.id_datos_personales,
+                id_nacimiento: data.id_nacimiento,
+                id_direccion: data.id_direccion,
+                id_educacion: data.id_educacion,
                 cod_univ: data.cod_univ,
                 cod_per: data.cod_per,
                 terminos: data.terminos,
-                correo_verificado:
-                  data.correo_verificado === "0" ? false : true,
+                correo_verificado: data.correo_verificado,
                 correo_fecha_verificacion: data.correo_fecha_verificacion,
                 sms_verificado: data.sms_verificado,
                 sms_fecha_verificacion: data.sms_fecha_verificacion,
@@ -660,8 +964,8 @@ class UsuarioForm extends React.Component {
       .catch(err => console.log(err));
   };
 
-  getIdFichaPersona() {
-    fetch(
+  getIdFichaPersona = async () => {
+    await fetch(
       `http://localhost/FichaWeb/app/controller/fichaActualizacionPersona/read.php?CodUniv=${
         this.state.cod_univ
       }`
@@ -669,14 +973,17 @@ class UsuarioForm extends React.Component {
       .then(response =>
         response.json().then(data => {
           if (response.status === 200) {
-            this.setState({
-              id_ficha: data.id_ficha
-            });
+            this.setState(
+              {
+                id_ficha: data.id_ficha
+              },
+              this.saveDatosPersonales
+            );
           }
         })
       )
       .catch(err => console.log(err));
-  }
+  };
 
   getDatosPersonales() {
     fetch(
@@ -771,7 +1078,7 @@ class UsuarioForm extends React.Component {
       .then(response => response.json())
       .then(data =>
         this.setState({
-          id_direccion: data.id_educacion,
+          id_educacion: data.id_educacion,
           id_educ_pais_per: data.id_educ_cod_pais,
           id_educ_ciudad_per: data.id_educ_cod_ciudad,
           id_educ_provincia_per: data.id_educ_cod_provincia,
@@ -821,7 +1128,10 @@ class UsuarioForm extends React.Component {
       bloqued,
       visibleSave,
       visibleSend,
-      disableNumero
+      disableNumero,
+      visibleModalCorreo,
+      visibleSendCorreo,
+      visibleSaveCorreo
     } = this.state;
     const {
       nombre_per,
@@ -876,7 +1186,8 @@ class UsuarioForm extends React.Component {
       fichaPersona,
       segundos,
       intentos,
-      mensaje
+      mensaje,
+      confirmacion
     } = this.state;
     const ficha = {
       nombre_per,
@@ -933,7 +1244,8 @@ class UsuarioForm extends React.Component {
 
       segundos,
       intentos,
-      mensaje
+      mensaje,
+      confirmacion
     };
     const pasos = [
       {
@@ -1003,7 +1315,7 @@ class UsuarioForm extends React.Component {
           onPressEnter={this.handlePressEnter}
           onChange={this.handleChangeInputCodigo("cod_univ")}
         />
-        <div hidden={!correo_verificado}>
+        <div hidden={!terminos}>
           <Steps current={paso}>
             {pasos.map(item => (
               <Step key={item.title} title={item.title} />
@@ -1137,6 +1449,87 @@ class UsuarioForm extends React.Component {
                   el día de mañana
                 </Text>
               </div>
+            </Modal>
+
+            <Modal
+              visible={visibleModalCorreo}
+              title="Validación de email"
+              centered={true}
+              footer={[
+                <div style={{ textAlign: "center" }}>
+                  <Button
+                    style={{ width: "50%", marginBottom: "8px" }}
+                    key="back"
+                    icon={"close"}
+                    type="danger"
+                    onClick={() => this.handleCancelCorreo()}
+                  >
+                    Cancelar
+                  </Button>
+                </div>,
+                <div style={{ textAlign: "center" }}>
+                  <Button
+                    hidden={visibleSendCorreo}
+                    style={{ width: "50%", marginBottom: "8px" }}
+                    key="submit"
+                    icon={"check"}
+                    type="primary"
+                    loading={loading}
+                    block={bloqued}
+                    onClick={() => this.handleOkCorreo()}
+                  >
+                    Enviar
+                  </Button>
+                </div>,
+                <div style={{ textAlign: "center" }}>
+                  <Button
+                    hidden={visibleSaveCorreo}
+                    style={{ width: "50%" }}
+                    key="submit"
+                    type="primary"
+                    loading={loading}
+                    onClick={() => this.handleSaveCorreoVerificado()}
+                  >
+                    Confirmar y Guardar
+                  </Button>
+                </div>
+              ]}
+            >
+              <Form {...formItemLayout}>
+                <Form.Item label="Email">
+                  {getFieldDecorator("email", {
+                    initialValue: this.state.email_per,
+                    rules: [
+                      {
+                        required: true,
+                        message: "Por favor ingrese su email"
+                      }
+                    ]
+                  })(
+                    <Input
+                      disabled={true}
+                      onChange={this.handleChangeInput("email_per")}
+                      style={{ width: "45%" }}
+                    />
+                  )}
+                </Form.Item>
+                <Form.Item label="Código de confirmación">
+                  {getFieldDecorator("confirmacion", {
+                    rules: [
+                      {
+                        required: true,
+                        message:
+                          "Por favor ingrese el código que ha sido enviado a su correo"
+                      }
+                    ]
+                  })(
+                    <Input
+                      style={{ width: "45%" }}
+                      onChange={this.handleChangeInput("confirmacion")}
+                    />
+                  )}
+                </Form.Item>
+              </Form>
             </Modal>
           </div>
         </div>

@@ -92,6 +92,7 @@ class LugarFechaNacimiento extends React.Component {
 
     const { getFieldDecorator } = this.props.form;
     const dateFormat = "YYYY-MM-DD";
+    const dateFormat2 = ["DD-MM-YYYY", "DD-MM-YY"];
 
     return (
       <Layout style={{ background: "white" }}>
@@ -113,7 +114,7 @@ class LugarFechaNacimiento extends React.Component {
               <DatePicker
                 defaultPickerValue={moment(ficha.fch_nacimiento_per)}
                 placeholder={"25-11-1999"}
-                format={"DD-MM-YYYY"}
+                format={dateFormat2}
                 onChange={handleChangeDatePicker("fch_nacimiento_per")}
               />
             )}
@@ -154,7 +155,8 @@ class LugarFechaNacimiento extends React.Component {
           <Form.Item label="Ciudad">
             {getFieldDecorator("ciudad", {
               initialValue:
-                ficha.id_nac_ciudad_per === "" || ficha.id_nac_ciudad_per == null
+                ficha.id_nac_ciudad_per === "" ||
+                ficha.id_nac_ciudad_per == null
                   ? "2919"
                   : ficha.id_nac_ciudad_per,
               rules: [

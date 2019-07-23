@@ -90,7 +90,8 @@ class LugarResidenciaActual extends React.Component {
           <Form.Item label="Ciudad">
             {getFieldDecorator("ciudad", {
               initialValue:
-                ficha.id_res_ciudad_per === "" || ficha.id_res_ciudad_per == null
+                ficha.id_res_ciudad_per === "" ||
+                ficha.id_res_ciudad_per == null
                   ? "2919"
                   : ficha.id_res_ciudad_per,
               rules: [
