@@ -27,7 +27,6 @@ code {
   margin-top: 16px;
   border-radius: 6px;
   background-color: #fafafa;
-
 }
 
 .steps-action {
@@ -39,4 +38,14 @@ code {
 
 .button-right {
   justify-content: flex-end;
+}
+
+.button-validate-disable {
+  margin: 0 auto;
+  width: 75%;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 36px;
 }

@@ -3,6 +3,16 @@ import { Form, Select, Layout } from "antd";
 
 const { Option } = Select;
 
+const initttt = {
+  mode: "no-cors",
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json"
+  }
+};
+
+const apiUrl = "http://192.168.0.5/FichaDatos/FichaWeb/modules";
+// const apiUrl = 'https://net.upt.edu.pe/FichaDatos/FichaWeb/modules';
 class NivelEducativo extends React.Component {
   siguiente = e => {
     e.preventDefault();
@@ -18,67 +28,182 @@ class NivelEducativo extends React.Component {
     super(props);
 
     this.state = {
-      nacionalidades: [],
+      ficha: "",
+      paises: [],
       ciudades: [],
       provincias: [],
       distritos: [],
-      instituciones: []
+      instituciones: [],
+      paisesEduc: [],
+      ciudadesEduc: [],
+      provinciasEduc: [],
+      distritosEduc: [],
+      session: this.props.session,
+      cod_univ: this.props.cod_univ
     };
   }
 
-  componentDidMount() {
-    this.getPaises();
-    this.getCiudades();
-    this.getProvincias();
-    this.getDistritos();
-    this.getInstituciones();
+  async componentDidMount() {
+    const {
+      ficha,
+      paises,
+      ciudades,
+      provincias,
+      distritos,
+      instituciones
+    } = this.props;
+    await this.setState({
+      paises: paises,
+      ciudadesEduc: ciudades,
+      provinciasEduc: provincias,
+      distritosEduc: distritos,
+      instituciones: instituciones,
+      ficha: ficha
+    });
+
+    await this.getCiudades();
+    await this.getProvincias();
+    await this.getDistritos();
   }
 
-  getPaises() {
-    fetch("http://localhost/FichaWeb/app/controller/nacionalidad/read.php")
-      .then(response => response.json())
-      .then(data => this.setState({ nacionalidades: data }));
-  }
+  getPaises = async () => {
+    // await fetch(`${apiUrl}/Nacionalidad.php?p=read&session=${this.state.session}&CodUniv=${this.state.cod_univ}`)
+    //   .then(response => response.json())
+    //   .then(data => this.setState({ nacionalidades: data }));
+  };
 
-  getCiudades() {
-    fetch(
-      "http://localhost/FichaWeb/app/controller/ciudad/read.php/?idPais=9589"
-    )
-      .then(response => response.json())
-      .then(data => this.setState({ ciudades: data }));
-  }
+  getCiudades = async () => {
+    // await fetch(
+    //   `${apiUrl}/Ciudad.php?p=read&session=${this.state.session}&CodUniv=${this.state.cod_univ}&idPais=9589`
+    // )
+    //   .then(response => response.json())
+    //   .then(data => this.setState({ ciudades: data }));
+    const ciudades = [];
 
-  getProvincias() {
-    fetch(
-      "http://localhost/FichaWeb/app/controller/provincia/read.php/?idCiudad=2919"
-    )
-      .then(response => response.json())
-      .then(data => this.setState({ provincias: data }));
-  }
+    for (let index = 0; index < this.state.ciudadesEduc.length; index++) {
+      if (
+        this.state.ciudadesEduc[index].relacion ==
+        this.state.ficha.id_educ_pais_per
+      ) {
+        ciudades.push(this.state.ciudadesEduc[index]);
+      }
+    }
 
-  getDistritos() {
-    fetch(
-      "http://localhost/FichaWeb/app/controller/distrito/read.php/?idPais=9589&idCiudad=2919&idProvincia=2301"
-    )
-      .then(response => response.json())
-      .then(data => this.setState({ distritos: data }));
-  }
+    if (ciudades.length > 0) {
+      await this.setState({
+        ciudades: ciudades
+      });
+    }
+    // else {
+    //   await this.setState({
+    //     ciudades: [],
+    //     ficha: {
+    //       ...this.state.ficha,
+    //       id_nac_ciudad_per: "-------",
+    //       id_nac_provincia_per: "-------"
+    //     }
+    //   });
+    // }
+  };
 
-  getInstituciones() {
-    fetch(
-      "http://localhost/FichaWeb/app/controller/nivelEducativo/read.php/?nivel=1&idPais=9589&idCiudad=2919&idProvincia=2301&idDistrito=230101"
+  getProvincias = async () => {
+    // await fetch(
+    //   `${apiUrl}/Provincia.php?p=read&session=${this.state.session}&CodUniv=${this.state.cod_univ}&idCiudad=2919`
+    // )
+    //   .then(response => response.json())
+    //   .then(data => this.setState({ provincias: data }));
+
+    const provincias = [];
+    for (let index = 0; index < this.state.provinciasEduc.length; index++) {
+      if (
+        this.state.provinciasEduc[index].relacion ==
+        this.state.ficha.id_educ_ciudad_per
+      ) {
+        provincias.push(this.state.provinciasEduc[index]);
+      }
+    }
+    if (provincias.length > 0) {
+      await this.setState({
+        provincias: provincias
+      });
+    }
+  };
+
+  getDistritos = async () => {
+    // await fetch(
+    //   `${apiUrl}/Distrito.php?p=read&session=${this.state.session}&CodUniv=${this.state.cod_univ}&idPais=9589&idCiudad=2919&idProvincia=2301`
+    // )
+    //   .then(response => response.json())
+    //   .then(data => this.setState({ distritos: data }));
+
+    const distritos = [];
+    for (let index = 0; index < this.state.distritosEduc.length; index++) {
+      if (
+        this.state.distritosEduc[index].CodDistProv ==
+        this.state.ficha.id_educ_provincia_per
+      ) {
+        distritos.push(this.state.distritosEduc[index]);
+      }
+    }
+    if (distritos.length > 0) {
+      await this.setState({
+        distritos: distritos
+      });
+    }
+  };
+
+  getInstituciones = async () => {
+    await fetch(
+      `${apiUrl}/NivelEducativo.php?p=read&session=${
+        this.state.session
+      }&CodUniv=${
+        this.state.cod_univ
+      }&nivel=1&idPais=9589&idCiudad=2919&idProvincia=2301&idDistrito=230101`
     )
       .then(response => response.json())
       .then(data => this.setState({ instituciones: data }));
-  }
+  };
+
+  handleSelectedPais = async e => {
+    await this.setState({
+      ficha: {
+        ...this.state.ficha,
+        id_educ_pais_per: e
+      }
+    });
+    await this.getCiudades();
+  };
+
+  handleSelectedCiudad = async e => {
+    await this.setState({
+      ficha: {
+        ...this.state.ficha,
+        id_educ_ciudad_per: e
+      }
+    });
+    await this.getProvincias();
+  };
+
+  handleSelectedProvincia = async e => {
+    await this.setState({
+      ficha: {
+        ...this.state.ficha,
+        id_educ_provincia_per: e
+      }
+    });
+    await this.getDistritos();
+  };
 
   render() {
-    const { nacionalidades } = this.state;
-    const { ciudades } = this.state;
-    const { provincias } = this.state;
-    const { distritos } = this.state;
-    const { instituciones } = this.state;
-    const { ficha, handleChangeSelect } = this.props;
+    const { handleChangeSelect } = this.props;
+    const {
+      ficha,
+      paises,
+      ciudades,
+      provincias,
+      distritos,
+      instituciones
+    } = this.state;
 
     const formItemLayout = {
       labelCol: {
@@ -101,8 +226,8 @@ class NivelEducativo extends React.Component {
               initialValue:
                 ficha.id_educ_pais_per === "" ||
                 ficha.id_educ_pais_per === "0" ||
-                ficha.id_educ_pais_per === null
-                  ? "9589"
+                ficha.id_educ_pais_per == null
+                  ? 9589
                   : ficha.id_educ_pais_per,
               rules: [
                 {
@@ -114,11 +239,17 @@ class NivelEducativo extends React.Component {
               <Select
                 placeholder={"Seleccione el pais"}
                 onChange={handleChangeSelect("id_educ_pais_per")}
+                onSelect={this.handleSelectedPais}
+                showSearch={true}
+                optionFilterProp={"children"}
+                filterOption={(input, option) =>
+                  option.props.children
+                    .toLowerCase()
+                    .indexOf(input.toLowerCase()) >= 0
+                }
               >
-                {nacionalidades.map(nacionalidad => (
-                  <Option value={nacionalidad.CodNac}>
-                    {nacionalidad.Descripcion}
-                  </Option>
+                {paises.map(pais => (
+                  <Option value={pais.CodNac}>{pais.Descripcion}</Option>
                 ))}
               </Select>
             )}
@@ -128,7 +259,7 @@ class NivelEducativo extends React.Component {
               initialValue:
                 ficha.id_educ_ciudad_per === "" ||
                 ficha.id_educ_ciudad_per == null
-                  ? "2919"
+                  ? 2919
                   : ficha.id_educ_ciudad_per,
               rules: [
                 {
@@ -140,6 +271,7 @@ class NivelEducativo extends React.Component {
               <Select
                 placeholder={"Seleccione la ciudad"}
                 onChange={handleChangeSelect("id_educ_ciudad_per")}
+                onSelect={this.handleSelectedCiudad}
               >
                 {ciudades.map(ciudad => (
                   <Option value={ciudad.CodCiudad}>{ciudad.descripcion}</Option>
@@ -152,7 +284,7 @@ class NivelEducativo extends React.Component {
               initialValue:
                 ficha.id_educ_provincia_per === "" ||
                 ficha.id_educ_provincia_per == null
-                  ? "2301"
+                  ? 2301
                   : ficha.id_educ_provincia_per,
               rules: [
                 {
@@ -164,6 +296,7 @@ class NivelEducativo extends React.Component {
               <Select
                 placeholder={"Seleccione la provincia"}
                 onChange={handleChangeSelect("id_educ_provincia_per")}
+                onSelect={this.handleSelectedProvincia}
               >
                 {provincias.map(provincia => (
                   <Option value={provincia.CodProv}>
@@ -178,7 +311,7 @@ class NivelEducativo extends React.Component {
               initialValue:
                 ficha.id_educ_distrito_per === "" ||
                 ficha.id_educ_distrito_per == null
-                  ? "230101"
+                  ? 230101
                   : ficha.id_educ_distrito_per,
               rules: [
                 {

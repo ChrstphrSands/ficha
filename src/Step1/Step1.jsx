@@ -26,25 +26,25 @@ class Step1 extends React.Component {
     }
 
     getIdiomas() {
-        fetch('http://localhost/FichaWeb/app/controller/idioma/read.php')
+        fetch('http://172.35.123.9/FichaWeb/app/controller/idioma/read.php')
             .then(response => response.json())
             .then(data => this.setState({idiomas: data}));
     }
 
     getDiscapacidades() {
-        fetch('http://localhost/FichaWeb/app/controller/discapacidad/read.php')
+        fetch('http://172.35.123.9/FichaWeb/app/controller/discapacidad/read.php')
             .then(response => response.json())
             .then(data => this.setState({discapacidades: data}))
     }
 
     getEstadosCiviles() {
-        fetch('http://localhost/FichaWeb/app/controller/estadoCivil/read.php')
+        fetch('http://172.35.123.9/FichaWeb/app/controller/estadoCivil/read.php')
             .then(response => response.json())
             .then(data => this.setState({estadosCiviles: data}))
     }
 
     getTipoDocumento() {
-        fetch('http://localhost/FichaWeb/app/controller/tipoDocumento/read.php')
+        fetch('http://172.35.123.9/FichaWeb/app/controller/tipoDocumento/read.php')
             .then(response => response.json())
             .then(data => this.setState({tiposDocumentos: data}))
     }

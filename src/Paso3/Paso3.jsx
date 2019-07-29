@@ -27,31 +27,31 @@ class Paso3 extends React.Component {
     }
 
     getFichaPersona() {
-        fetch('http://localhost/FichaWeb/app/controller/fichaPersona/read.php')
+        fetch('http://172.35.123.9/FichaWeb/app/controller/fichaPersona/read.php')
             .then(response => response.json())
             .then(data => this.setState({fichaPersona: data}))
     }
 
     getPaises() {
-        fetch('http://localhost/FichaWeb/app/controller/nacionalidad/read.php')
+        fetch('http://172.35.123.9/FichaWeb/app/controller/nacionalidad/read.php')
             .then(response => response.json())
             .then(data => this.setState({nacionalidades: data}));
     }
 
     getCiudades() {
-        fetch('http://localhost/FichaWeb/app/controller/ciudad/read.php/?idPais=9589')
+        fetch('http://172.35.123.9/FichaWeb/app/controller/ciudad/read.php/?idPais=9589')
             .then(response => response.json())
             .then(data => this.setState({ciudades: data}));
     }
 
     getProvincias() {
-        fetch('http://localhost/FichaWeb/app/controller/provincia/read.php/?idCiudad=2919')
+        fetch('http://172.35.123.9/FichaWeb/app/controller/provincia/read.php/?idCiudad=2919')
             .then(response => response.json())
             .then(data => this.setState({provincias: data}));
     }
 
     getDistritos() {
-        fetch('http://localhost/FichaWeb/app/controller/distrito/read.php/?idPais=9589&idCiudad=2919&idProvincia=2301')
+        fetch('http://172.35.123.9/FichaWeb/app/controller/distrito/read.php/?idPais=9589&idCiudad=2919&idProvincia=2301')
             .then(response => response.json())
             .then(data => this.setState({distritos: data}));
     }

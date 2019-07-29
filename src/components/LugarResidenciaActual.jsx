@@ -4,6 +4,16 @@ import { Form, Input, Select, Layout } from "antd";
 const { TextArea } = Input;
 const { Option } = Select;
 
+const initttt = {
+  mode: "no-cors",
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json"
+  }
+};
+
+const apiUrl = "http://192.168.0.5/FichaDatos/FichaWeb/modules";
+// const apiUrl = 'https://net.upt.edu.pe/FichaDatos/FichaWeb/modules';
 class LugarResidenciaActual extends React.Component {
   siguiente = e => {
     e.preventDefault();
@@ -19,57 +29,147 @@ class LugarResidenciaActual extends React.Component {
     super(props);
 
     this.state = {
+      ficha: "",
       ciudades: [],
       provincias: [],
       distritos: [],
-      dependencias: []
+      dependencias: [],
+      ciudadesRes: [],
+      provinciasRes: [],
+      distritosRes: [],
+      session: this.props.session,
+      cod_univ: this.props.cod_univ
     };
   }
 
-  componentDidMount() {
-    this.getCiudades();
-    this.getProvincias();
-    this.getDistritos();
-    this.getDependencias();
+  async componentDidMount() {
+    const { ficha, ciudades, provincias, distritos, dependencias } = this.props;
+
+    await this.setState({
+      ficha: ficha,
+      ciudadesRes: ciudades,
+      provinciasRes: provincias,
+      distritosRes: distritos,
+      dependencias: dependencias
+    });
+    await this.getCiudades();
+    await this.getProvincias();
+    await this.getDistritos();
+    // this.getDependencias();
   }
 
-  getCiudades() {
-    fetch(
-      "http://localhost/FichaWeb/app/controller/ciudad/read.php/?idPais=9589"
-    )
-      .then(response => response.json())
-      .then(data => this.setState({ ciudades: data }));
-  }
+  getCiudades = async () => {
+    // await fetch(
+    //   `${apiUrl}/Ciudad.php?p=read&session=${this.state.session}&CodUniv=${this.state.cod_univ}&idPais=9589`
+    // )
+    //   .then(response => response.json())
+    //   .then(data => this.setState({ ciudades: data }));
+    const ciudades = [];
 
-  getProvincias() {
-    fetch(
-      "http://localhost/FichaWeb/app/controller/provincia/read.php/?idCiudad=2919"
-    )
-      .then(response => response.json())
-      .then(data => this.setState({ provincias: data }));
-  }
+    for (let index = 0; index < this.state.ciudadesRes.length; index++) {
+      if (this.state.ciudadesRes[index].relacion == 9589) {
+        ciudades.push(this.state.ciudadesRes[index]);
+      }
+    }
 
-  getDistritos() {
-    fetch(
-      "http://localhost/FichaWeb/app/controller/distrito/read.php/?idPais=9589&idCiudad=2919&idProvincia=2301"
-    )
-      .then(response => response.json())
-      .then(data => this.setState({ distritos: data }));
-  }
+    if (ciudades.length > 0) {
+      await this.setState({
+        ciudades: ciudades
+      });
+    }
+    // else {
+    //   await this.setState({
+    //     ciudades: [],
+    //     ficha: {
+    //       ...this.state.ficha,
+    //       id_res_ciudad_per: "-------",
+    //       id_res_provincia_per: "-------"
+    //     }
+    //   });
+    // }
+  };
 
-  getDependencias() {
-    fetch(
-      "http://localhost/FichaWeb/app/controller/dependenciaVivienda/read.php"
+  getProvincias = async () => {
+    const provincias = [];
+    for (let index = 0; index < this.state.provinciasRes.length; index++) {
+      if (
+        this.state.provinciasRes[index].relacion ==
+        this.state.ficha.id_res_ciudad_per
+      ) {
+        provincias.push(this.state.provinciasRes[index]);
+      }
+    }
+    if (provincias.length > 0) {
+      await this.setState({
+        provincias: provincias
+      });
+    }
+
+    // await fetch(
+    //   `${apiUrl}/Provincia.php?p=read&session=${this.state.session}&CodUniv=${this.state.cod_univ}&idCiudad=2919`
+    // )
+    //   .then(response => response.json())
+    //   .then(data => this.setState({ provincias: data }));
+  };
+
+  getDistritos = async () => {
+    const distritos = [];
+    for (let index = 0; index < this.state.distritosRes.length; index++) {
+      if (
+        this.state.distritosRes[index].CodDistProv ==
+        this.state.ficha.id_res_provincia_per
+      ) {
+        distritos.push(this.state.distritosRes[index]);
+      }
+    }
+    if (distritos.length > 0) {
+      await this.setState({
+        distritos: distritos
+      });
+    }
+    // await fetch(
+    //   `${apiUrl}/Distrito.php?p=read&session=${this.state.session}&CodUniv=${this.state.cod_univ}&idPais=9589&idCiudad=2919&idProvincia=2301`
+    // )
+    //   .then(response => response.json())
+    //   .then(data => this.setState({ distritos: data }));
+  };
+
+  getDependencias = async () => {
+    await fetch(
+      `${apiUrl}/DependenciaVivienda.php?p=read&session=${
+        this.state.session
+      }&CodUniv=${this.state.cod_univ}`
     )
       .then(response => response.json())
       .then(data => this.setState({ dependencias: data }));
-  }
+  };
+
+  handleSelectedCiudad = async e => {
+    await this.setState({
+      ficha: {
+        ...this.state.ficha,
+        id_res_ciudad_per: e
+      }
+    });
+    await this.getProvincias();
+  };
+
+  handleSelectedProvincia = async e => {
+    await this.setState({
+      ficha: {
+        ...this.state.ficha,
+        id_res_provincia_per: e
+      }
+    });
+    await this.getDistritos();
+  };
 
   render() {
-    const { ciudades, provincias, distritos, dependencias } = this.state;
+    // const { dependencias } = this.state;
     // const { provincias } = this.state;
     // const { distritos } = this.state;
-    const { ficha, handleChangeInput, handleChangeSelect } = this.props;
+    const { handleChangeInput, handleChangeSelect } = this.props;
+    const { ficha, ciudades, provincias, distritos, dependencias } = this.state;
 
     const formItemLayout = {
       labelCol: {
@@ -83,7 +183,6 @@ class LugarResidenciaActual extends React.Component {
     };
 
     const { getFieldDecorator } = this.props.form;
-
     return (
       <Layout style={{ background: "white" }}>
         <Form {...formItemLayout}>
@@ -92,7 +191,7 @@ class LugarResidenciaActual extends React.Component {
               initialValue:
                 ficha.id_res_ciudad_per === "" ||
                 ficha.id_res_ciudad_per == null
-                  ? "2919"
+                  ? 2919
                   : ficha.id_res_ciudad_per,
               rules: [
                 {
@@ -102,8 +201,9 @@ class LugarResidenciaActual extends React.Component {
               ]
             })(
               <Select
-                placeholder={"Seleccione en caso tenga alguna discapacidad"}
+                placeholder={"Seleccione la ciudad donde reside"}
                 onChange={handleChangeSelect("id_res_ciudad_per")}
+                onSelect={this.handleSelectedCiudad}
               >
                 {ciudades.map(ciudad => (
                   <Option value={ciudad.CodCiudad}>{ciudad.descripcion}</Option>
@@ -116,18 +216,19 @@ class LugarResidenciaActual extends React.Component {
               initialValue:
                 ficha.id_res_provincia_per === "" ||
                 ficha.id_res_provincia_per == null
-                  ? "2301"
+                  ? 2301
                   : ficha.id_res_provincia_per,
               rules: [
                 {
                   required: true,
-                  message: "Por favor seleccione la provincia."
+                  message: "Seleccione la provincia donde reside."
                 }
               ]
             })(
               <Select
                 placeholder={"Provincia"}
                 onChange={handleChangeSelect("id_res_provincia_per")}
+                onSelect={this.handleSelectedProvincia}
               >
                 {provincias.map(provincia => (
                   <Option value={provincia.CodProv}>
@@ -142,7 +243,7 @@ class LugarResidenciaActual extends React.Component {
               initialValue:
                 ficha.id_res_distrito_per === "" ||
                 ficha.id_res_distrito_per == null
-                  ? "230101"
+                  ? 230101
                   : ficha.id_res_distrito_per,
               rules: [
                 {
@@ -215,7 +316,7 @@ class LugarResidenciaActual extends React.Component {
               initialValue:
                 ficha.id_dependencia_vivienda === "" ||
                 ficha.id_dependencia_vivienda == null
-                  ? "1"
+                  ? 1
                   : ficha.id_dependencia_vivienda,
               rules: [
                 {
